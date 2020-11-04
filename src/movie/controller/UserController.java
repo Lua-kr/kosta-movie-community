@@ -3,13 +3,13 @@ package movie.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
-
 import movie.service.UserService;
 
 
 public class UserController implements Controller {
 	
 	private  UserService service = new UserService();
+	private ModelAndView mv = new ModelAndView();
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {

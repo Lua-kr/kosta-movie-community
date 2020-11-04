@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
+import movie.dto.Letter;
 import movie.dto.UserDTO;
 import movie.util.DbUtil;
 
@@ -220,11 +222,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void getUserLetterList(int uid) throws SQLException {
-		
-	}
-
-	@Override
 	public int getUserNotification(int u_id) throws SQLException {
 		return 0;
 	}
@@ -249,6 +246,18 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public String getUserLastDate(int u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Letter> getUserLetterList(int uid) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateUserLastDate(int u_id) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
