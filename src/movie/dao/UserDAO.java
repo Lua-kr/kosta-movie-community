@@ -1,5 +1,6 @@
 package movie.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import java.util.List;
@@ -76,7 +77,7 @@ public interface UserDAO {
 	 * @param2	int numPoint
 	 * @return	성공 여부 (true/false)
 	 */
-	boolean addUserPoints(int uid, int numPoint) throws SQLException;
+	boolean addUserPoints(Connection con, int uid, int numPoint) throws SQLException;
 	
 	
 	/**
