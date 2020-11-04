@@ -22,7 +22,7 @@ public interface AdminDAO {
 	/*
 	 *	회원 정보 (검색)
 	 */
-	boolean AdminSearch(int uid) throws SQLException;
+	boolean AdminSearch(UserDTO user) throws SQLException;
 	
 	
 	/*

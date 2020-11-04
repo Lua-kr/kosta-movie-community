@@ -14,8 +14,9 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public boolean AdminSearch(int uid) throws SQLException {
-		// TODO Auto-generated method stub
+	public boolean AdminSearch(UserDTO user) throws SQLException {
+		
+		
 		return false;
 	}
 
