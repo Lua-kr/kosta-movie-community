@@ -39,7 +39,7 @@ public interface UserDAO {
 	 * TODO:	(서버에 저장된 refresh token, access token 삭제)
 	 * 
 	 * @param	UserDTO user
-	 * @return	성공 여부 (true/false)
+	 * @return	boolean 성공 여부 (false/true)
 	 */
 	boolean userLogout(UserDTO user) throws SQLException;
 	
@@ -57,7 +57,7 @@ public interface UserDAO {
 	 *	유저 마지막 로그인 날짜/IP 갱신
 	 * 
 	 * @param	UserDTO user
-	 * @return	성공 여부 (true/false)
+	 * @return	boolean 성공 여부 (false/true)
 	 */
 	boolean updateUserLastLogin(UserDTO user) throws SQLException;
 	
@@ -80,7 +80,7 @@ public interface UserDAO {
 	 * @param1	Connection con
 	 * @param2	int [userlist 테이블] u_id
 	 * @param3	int numPoint
-	 * @return	성공 여부 (true/false)
+	 * @return	boolean 성공 여부 (false/true)
 	 */
 	boolean addUserPoints(Connection con, int uid, int numPoint) throws SQLException;
 	
@@ -108,7 +108,7 @@ public interface UserDAO {
 	 * 
 	 * @param	UserDTO uid
 	 * @param	int [user_role 테이블] u_id
-	 * @return	성공 여부 (true/false)
+	 * @return	boolean 성공 여부 (false/true)
 	 */
 	boolean setUserRoleId(UserDTO user, int roleId) throws SQLException;
 	
@@ -117,8 +117,8 @@ public interface UserDAO {
 	 *	유저 성인 등급 열람 여부 설정
 	 * 
 	 * @param	int [user_role 테이블] u_id
-	 * @param	boolean visible (true/false)
-	 * @return	성공 여부 (true/false)
+	 * @param	boolean visible (false/true)
+	 * @return	boolean 성공 여부 (false/true)
 	 */
 	boolean setUserViewAdult(int uid, boolean visible) throws SQLException;
 	
@@ -150,52 +150,62 @@ public interface UserDAO {
 	 * @param	int [userlist 테이블] u_id
 	 * @return	int numAlarms
 	 */
-	int getUserNotification(int u_id) throws SQLException;
+	int getUserNotification(int uid) throws SQLException;
 	
 	
 	/**
 	 * 	유저 가입 당시 아이피 확인
 	 * 
-	 * @param	[userlist 테이블] u_id
+	 * @param	int [userlist 테이블] u_id
 	 * @return	String ip
 	 */
-	String getUserFirstIP(int u_id) throws SQLException;
+	String getUserFirstIP(int uid) throws SQLException;
 	
 	
 	/**
 	 * 	유저 마지막 로그인 아이피 확인
 	 * 
-	 * @param	[userlist 테이블] u_id
+	 * @param	int [userlist 테이블] u_id
 	 * @return	String ip
 	 */
-	String getUserLastIP(int u_id) throws SQLException;
+	String getUserLastIP(int uid) throws SQLException;
 	
 	
 	/**
 	 * 	유저 가입 당시 날짜 확인
 	 * 
-	 * @param	[userlist 테이블] u_id
+	 * @param	int [userlist 테이블] u_id
 	 * @return	String date
 	 */
-	String getUserFirstDate(int u_id) throws SQLException;
+	String getUserFirstDate(int uid) throws SQLException;
 	
 	
 	/**
 	 * 	유저 마지막 로그인 날짜 확인
 	 * 
-	 * @param	[userlist 테이블] u_id
+	 * @param	int [userlist 테이블] u_id
 	 * @return	String date
 	 */
-	String getUserLastDate(int u_id) throws SQLException;
+	String getUserLastDate(int uid) throws SQLException;
 	
 	
 	/**
 	 * 	유저 마지막 로그인 날짜 갱신
 	 * 
-	 * @param	[userlist 테이블] u_id
+	 * @param	int [userlist 테이블] u_id
 	 * @return	String date
 	 */
-	String updateUserLastDate(int u_id) throws SQLException;
+	String updateUserLastDate(int uid) throws SQLException;
+	
+	
+	/**
+	 *	계정 잠금
+	 *
+	 * @param1	int [userlist 테이블] u_id
+	 * @param2	boolean false/true
+	 * @return	성공 여부 (false/true)
+	 */
+	boolean setUserLock(int uid, boolean lock) throws SQLException;
 	
 	
 }//UserDAO
