@@ -1,6 +1,6 @@
 package movie.dto;
 
-public class User {
+public class UserDTO {
 	private int uid; // 고유유저번호
 	private String name; // 닉네임
 	private String email;// 메일
@@ -12,11 +12,11 @@ public class User {
 	private int point; // 활동 포인트
 
 	// constructor
-	public User() {
+	public UserDTO() {
 	}
 	
 	//정보수정시 ??
-	public User(String name, String email, String ip, String lastDate, int point) {
+	public UserDTO(String name, String email, String ip, String lastDate, int point) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -25,7 +25,7 @@ public class User {
 		this.point = point;
 	}
 
-	public User(int uid, String name, String email, String ip, String creDate, String lock, String lastDate,
+	public UserDTO(int uid, String name, String email, String ip, String creDate, String lock, String lastDate,
 			String lastIp, int point) {
 		super();
 		this.uid = uid;
@@ -112,4 +112,4 @@ public class User {
 		this.point = point;
 	};
 
-}// class
+}
