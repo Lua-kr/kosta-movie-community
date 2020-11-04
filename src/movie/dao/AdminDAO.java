@@ -28,7 +28,7 @@ public interface AdminDAO {
 	/*
 	 *	회원 정보 (수정)
 	 */
-	boolean AdminUpdate(UserDTO user) throws SQLException;
+	boolean AdminUpdate(int uid, int points, String roldID) throws SQLException;
 	
 	
 	/*
@@ -40,13 +40,13 @@ public interface AdminDAO {
 	/*
 	 *	회원 블랙 리스트 등록(아이디 차단)
 	 */
-	int AdminBlackList(int uid) throws SQLException;
+	int AdminBlackList(int uid, int locked) throws SQLException;
 	
 	
 	/*
 	 *	게시물 (수정)
 	 */
-	boolean AdminBoardUpdate(int uid) throws SQLException;
+	boolean AdminBoardUpdate(int uid, String text, String title) throws SQLException;
 	
 	
 	/*
@@ -64,7 +64,7 @@ public interface AdminDAO {
 	/**
 	 * 	 포인트 상점 관리(수정)
 	 * */
-	boolean AdminPointUpdate(int uid) throws SQLException;
+	boolean AdminPointUpdate(int uid, String name, String type, String stock) throws SQLException;
 	
 	
 	/**
