@@ -55,33 +55,6 @@ public class AdminDAOImpl implements AdminDAO {
 	   }//AdminSearch
 
 	 @Override
-	   public boolean AdminUpdate(int uid, int points, String roldID) throws SQLException {
-	      Connection con = null;
-	      PreparedStatement ps = null;
-	      boolean result = false;
-	      
-	      String sql = "update userlist set POINTS=?, ROLE_ID=? where u_id = ?";
-	            
-	      try {
-	         con = DbUtil.getConnection();
-	         ps = con.prepareStatement(sql);
-
-	         ps.setInt(1, points);
-	         ps.setString(2, roldID);
-	         ps.setInt(3, uid);
-	         
-	         ps.executeUpdate();
-	         result = true;
-	      }catch (Exception e) {
-	         result = false;
-	      }finally {
-	         DbUtil.dbClose(con, ps, null);
-	      }//finally
-	      
-	      return result;
-	   }//AdminUpdate
-
-	 @Override
 	   public boolean AdminDelete(int uid) throws SQLException {
 	      Connection con = DbUtil.getConnection();
 	      PreparedStatement ps =null;
