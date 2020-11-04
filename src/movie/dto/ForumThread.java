@@ -1,6 +1,6 @@
 package movie.dto;
 
-public class ForumThreadDTO {
+public class ForumThread {
 	private int ftId;
 	private int countRead;
 	private int countPost;
@@ -12,8 +12,8 @@ public class ForumThreadDTO {
 	private String title;
 	private String timeDate;
 	
-	public ForumThreadDTO() {}
-	public ForumThreadDTO(int ftId, int countRead, int countPost, int authorId, int threadLocked, int vote, int postLocked,
+	public ForumThread() {}
+	public ForumThread(int ftId, int countRead, int countPost, int authorId, int threadLocked, int vote, int postLocked,
 			String text, String title, String timeDate) {
 		super();
 		this.ftId = ftId;

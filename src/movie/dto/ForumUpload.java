@@ -1,12 +1,12 @@
 package movie.dto;
 
-public class ForumUploadDTO {
+public class ForumUpload {
 	private int id;
 	private int threadId;
 	private int fileId;
 	
-	public ForumUploadDTO() {}
-	public ForumUploadDTO(int id, int threadId, int fileId) {
+	public ForumUpload() {}
+	public ForumUpload(int id, int threadId, int fileId) {
 		super();
 		this.id = id;
 		this.threadId = threadId;
