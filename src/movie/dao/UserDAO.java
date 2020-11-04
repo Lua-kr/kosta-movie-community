@@ -75,12 +75,12 @@ public interface UserDAO {
 	 *
 	 *	@apiNote	유저가 활동하여 포인트 변동이 있는 메소드에서 쓰이는 전용 (해당 메소드의 Connection con 요구)
 	 * 
-	 * @param1	int [userlist 테이블] u_id
-	 * @param2	Connection con
+	 * @param1	Connection con
+	 * @param2	int [userlist 테이블] u_id
 	 * @param3	int numPoint
 	 * @return	성공 여부 (true/false)
 	 */
-	boolean addUserPoints(int uid, Connection con, int numPoint) throws SQLException;
+	boolean addUserPoints(Connection con, int uid, int numPoint) throws SQLException;
 	
 	
 	/**
