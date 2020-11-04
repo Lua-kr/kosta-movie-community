@@ -1,7 +1,7 @@
 package movie.dto;
 
 public class UserDTO {
-	private int uid; // 고유유저번호
+	private int uid; // 고유 유저 번호
 	private String name; // 닉네임
 	private String email;// 메일
 	private String ip;// 아이피
@@ -10,6 +10,8 @@ public class UserDTO {
 	private String lastDate; // 마지막접속일
 	private String lastIp; // 마지막 접속 아이피
 	private int point; // 활동 포인트
+	private int roleId; // 등급 번호
+	private boolean viewAdult; // 성인 등급 열람 여부
 
 	// constructor
 	public UserDTO() {
@@ -44,10 +46,6 @@ public class UserDTO {
 		return uid;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -58,10 +56,6 @@ public class UserDTO {
 
 	public String getEmail() {
 		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getIp() {
@@ -110,6 +104,22 @@ public class UserDTO {
 
 	public void setPoint(int point) {
 		this.point = point;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public boolean isViewAdult() {
+		return viewAdult;
+	}
+
+	public void setViewAdult(boolean viewAdult) {
+		this.viewAdult = viewAdult;
 	};
 
-}
+}// class
