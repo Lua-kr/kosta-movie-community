@@ -2,7 +2,9 @@ package movie.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
+import movie.dto.Letter;
 import movie.dto.UserDTO;
 
 
@@ -46,7 +48,7 @@ public interface UserDAO {
 	 *	계정 잠금 여부 확인
 	 * 
 	 * @param	int [userlist 테이블] u_id
-	 * @return	int [user 테이블] account_locked 값 (0/1)
+	 * @return	boolean [user 테이블] account_locked 값 (0/1 = false/true)
 	 */
 	boolean getUserLocked(int uid) throws SQLException;
 	
@@ -125,7 +127,7 @@ public interface UserDAO {
 	 *	유저 성인 등급 열람 여부 확인
 	 * 
 	 * @param	UserDTO user
-	 * @return	user.viewAdult
+	 * @return	boolean user.viewAdult
 	 */
 	boolean getUserViewAdult(UserDTO user) throws SQLException;
 	
@@ -133,12 +135,10 @@ public interface UserDAO {
 	/**
 	 * 	유저 쪽지 전체 목록 불러오기
 	 * 
-	 *	TODO:	(return 정의 필요, json 또는 list)
-	 * 
 	 * @param	int [userlist 테이블] u_id
-	 * @return	(미정) Json or List<Letter> letterList
+	 * @return	List<Letter>
 	 */
-	void getUserLetterList(int uid) throws SQLException; // TODO: return 정의
+	List<Letter> getUserLetterList(int uid) throws SQLException;
 	
 	
 	/**
@@ -187,6 +187,15 @@ public interface UserDAO {
 	 * @return	String date
 	 */
 	String getUserLastDate(int u_id) throws SQLException;
+	
+	
+	/**
+	 * 	유저 마지막 로그인 날짜 갱신
+	 * 
+	 * @param	[userlist 테이블] u_id
+	 * @return	String date
+	 */
+	String updateUserLastDate(int u_id) throws SQLException;
 	
 	
 }//UserDAO
