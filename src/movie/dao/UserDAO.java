@@ -3,8 +3,6 @@ package movie.dao;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import java.util.List;
-
 import movie.dto.UserDTO;
 
 
@@ -17,13 +15,15 @@ public interface UserDAO {
 	 *	유저 고유 아이디 확인
 	 *
 	 * @param	UserDTO user
-	 * @return	없을 경우 -1, 있으면 [user 테이블] uid
+	 * @return	없을 경우 -1, 있으면 [userlist 테이블] u_id
 	 */
 	int getUserId(UserDTO user) throws SQLException;
 	
 	
 	/**
 	 *	유저 로그인
+	 *
+	 *	TODO:	(로그인 API 기능 구현 후 인수와 리턴 정의)
 	 * 
 	 * @param	(미정) UserDTO user
 	 * @return	(미정) access token 또는 UserDTO user
@@ -34,7 +34,7 @@ public interface UserDAO {
 	/**
 	 *	회원 로그아웃
 	 * 
-	 * TODO:	서버에 저장된 refresh token, access token 삭제
+	 * TODO:	(서버에 저장된 refresh token, access token 삭제)
 	 * 
 	 * @param	UserDTO user
 	 * @return	성공 여부 (true/false)
@@ -45,7 +45,7 @@ public interface UserDAO {
 	/**
 	 *	계정 잠금 여부 확인
 	 * 
-	 * @param	int [user 테이블] uid
+	 * @param	int [userlist 테이블] u_id
 	 * @return	int [user 테이블] account_locked 값 (0/1)
 	 */
 	boolean getUserLocked(int uid) throws SQLException;
@@ -63,7 +63,7 @@ public interface UserDAO {
 	/**
 	 *	유저 활동 포인트 설정
 	 * 
-	 * @param1	int [user 테이블] uid
+	 * @param1	int [userlist 테이블] u_id
 	 * @param2	int numPoint
 	 * @return	[user 테이블] points (결과 값)
 	 */
@@ -72,12 +72,15 @@ public interface UserDAO {
 	
 	/**
 	 *	유저 활동 포인트 더하기/빼기
+	 *
+	 *	@apiNote	유저가 활동하여 포인트 변동이 있는 메소드에서 쓰이는 전용 (해당 메소드의 Connection con 요구)
 	 * 
-	 * @param1	int [user 테이블] uid
-	 * @param2	int numPoint
+	 * @param1	int [userlist 테이블] u_id
+	 * @param2	Connection con
+	 * @param3	int numPoint
 	 * @return	성공 여부 (true/false)
 	 */
-	boolean addUserPoints(Connection con, int uid, int numPoint) throws SQLException;
+	boolean addUserPoints(int uid, Connection con, int numPoint) throws SQLException;
 	
 	
 	/**
@@ -102,7 +105,7 @@ public interface UserDAO {
 	 *	유저 등급 아이디 설정
 	 * 
 	 * @param	UserDTO uid
-	 * @param	int [user_role 테이블] uid
+	 * @param	int [user_role 테이블] u_id
 	 * @return	성공 여부 (true/false)
 	 */
 	boolean setUserRoleId(UserDTO user, int roleId) throws SQLException;
@@ -111,7 +114,7 @@ public interface UserDAO {
 	/**
 	 *	유저 성인 등급 열람 여부 설정
 	 * 
-	 * @param	int [user_role 테이블] uid
+	 * @param	int [user_role 테이블] u_id
 	 * @param	boolean visible (true/false)
 	 * @return	성공 여부 (true/false)
 	 */
@@ -125,6 +128,29 @@ public interface UserDAO {
 	 * @return	user.viewAdult
 	 */
 	boolean getUserViewAdult(UserDTO user) throws SQLException;
+	
+	
+	/**
+	 * 	유저 쪽지 전체 목록 불러오기
+	 * 
+	 *	TODO:	(return 정의 필요, json 또는 list)
+	 * 
+	 * @param	int [userlist 테이블] u_id
+	 * @return	(미정) Json or List<Letter> letterList
+	 */
+	void getUserLetterList(int uid) throws SQLException; // TODO: return 정의
+	
+	
+	/**
+	 *	유저 알람 확인
+	 *
+	 *	@apiNote	[user_letter 테이블] receiver_id 컬럼을 [userlist 테이블] u_id 참조하여
+	 *				[user_letter 테이블] checked 값이 0 인 컬럼의 수를 확인
+	 *
+	 *	@param	int [userlist 테이블] u_id
+	 *	@return	int numAlarms
+	 */
+	int getUserNotification(int u_id) throws SQLException;
 	
 	
 }//UserDAO

@@ -13,10 +13,6 @@ public class UserDTO {
 	private int roleId; // 등급 번호
 	private boolean viewAdult; // 성인 등급 열람 여부
 
-	// constructor
-	public UserDTO() {
-	}
-	
 	//정보수정시 ??
 	public UserDTO(String name, String email, String ip, String lastDate, int point) {
 		super();
