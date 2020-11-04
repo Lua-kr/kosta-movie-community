@@ -36,6 +36,25 @@ public class DbUtil {
 	}
 	
 	
+	
+	//´Ý±â
+		public static void dbClose(Connection con, Statement st){
+			try{
+				if(st!=null){
+					st.close();
+					st=null;
+				}
+				if(con!=null){
+					con.close();
+					con=null;
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
+
+	
 	//´Ý±â
 	public static void dbClose(Connection con, Statement st){
 		try{
