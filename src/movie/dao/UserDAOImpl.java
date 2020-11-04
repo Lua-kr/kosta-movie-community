@@ -219,4 +219,16 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
+	@Override
+	public void getUserLetterList(int uid) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getUserNotification(int u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
