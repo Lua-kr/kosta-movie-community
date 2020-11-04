@@ -221,14 +221,36 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void getUserLetterList(int uid) throws SQLException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public int getUserNotification(int u_id) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String getUserFirstIP(int u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUserLastIP(int u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUserFirstDate(int u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUserLastDate(int u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
