@@ -36,6 +36,22 @@ public class UserDTO {
 		this.lastIp = lastIp;
 		this.point = point;
 	}
+	
+	public UserDTO(int uid, String name, String email, String ip, String creDate, String lock, String lastDate,
+			String lastIp, int point, int roleId, boolean viewAdult) {
+		super();
+		this.uid = uid;
+		this.name = name;
+		this.email = email;
+		this.ip = ip;
+		this.creDate = creDate;
+		this.lock = lock;
+		this.lastDate = lastDate;
+		this.lastIp = lastIp;
+		this.point = point;
+		this.roleId = roleId;
+		this.viewAdult = viewAdult;
+	}
 
 	// set&get
 	public int getUid() {
