@@ -1,8 +1,13 @@
 package movie.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
+
+import movie.dto.UserDTO;
 import movie.service.UserService;
 
 
@@ -57,13 +62,6 @@ public class UserController implements Controller {
 	public ModelAndView setUserPoints(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return null;
 	}//setUserPoints
-
-	/**
-	 * 유저 활동 포인트 더하기/빼기
-	 */
-	public ModelAndView addUserPoints(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return null;
-	}//addUserPoints
 
 	/**
 	 * 유저 활동 포인트 확인

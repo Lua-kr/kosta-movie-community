@@ -144,8 +144,8 @@ public interface UserDAO {
 	/**
 	 *	유저 알람 확인
 	 *
-	 *	@apiNote	[user_letter 테이블] receiver_id 컬럼을 [userlist 테이블] u_id 참조하여
-	 *				[user_letter 테이블] checked 값이 0 인 컬럼의 수를 확인
+	 *	@apiNote	[notification 테이블] receiver_id 컬럼을 [userlist 테이블] u_id 참조하여
+	 *				[noification 테이블] checked 값이 0 인 컬럼의 수를 확인
 	 *
 	 * @param	int [userlist 테이블] u_id
 	 * @return	int numAlarms
@@ -195,7 +195,7 @@ public interface UserDAO {
 	 * @param	int [userlist 테이블] u_id
 	 * @return	String date
 	 */
-	String updateUserLastDate(int uid) throws SQLException;
+	boolean updateUserLastDate(int uid) throws SQLException;
 	
 	
 	/**

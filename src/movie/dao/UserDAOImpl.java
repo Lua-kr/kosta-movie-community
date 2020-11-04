@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import movie.dto.Letter;
@@ -101,6 +102,9 @@ public class UserDAOImpl implements UserDAO {
 	      return result;
 	}
 
+	/**
+	 * 유저 활동 포인트 더하기/빼기
+	 */
 	@Override
 	public boolean addUserPoints(Connection con, int uid, int numPoint) throws SQLException {
 		PreparedStatement ps = null;
@@ -223,43 +227,183 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int getUserNotification(int u_id) throws SQLException {
-		return 0;
+		  Connection con = null;
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      int numAlarms = 0;
+	      String sql = "select count(*) from NOTIFICATION where checked = 0 and RECEIVER_ID = ?";
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setInt(1, u_id);
+	         
+	         rs=ps.executeQuery();
+	         if(rs.next()) {
+	            numAlarms = rs.getInt(1);
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, rs);
+	      }
+	      return numAlarms;
+
 	}
 
 	@Override
 	public String getUserFirstIP(int u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		 Connection con = null;
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      String ip = null;
+	      String sql = "select CREATED_IP from USERLIST where U_ID = ?";
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setInt(1, u_id);
+	         
+	         rs=ps.executeQuery();
+	         while(rs.next()) {
+	            ip = rs.getString(1);
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, rs);
+	      }
+	      return ip;
+
 	}
 
 	@Override
 	public String getUserLastIP(int u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		  Connection con = null;
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      String lastIp = null;
+	      String sql = "select LAST_UPDATE_IP from USERLIST where U_ID = ?";
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setInt(1, u_id);
+	         
+	         rs=ps.executeQuery();
+	         while(rs.next()) {
+	            lastIp = rs.getString(1);
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, rs);
+	      }
+	      return lastIp;
+
 	}
 
 	@Override
-	public String getUserFirstDate(int u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public String getUserFirstDate(int uid) throws SQLException {
+		  Connection con = null;
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      String sql = "select created_date from userlist where u_id = ?";
+	      String date=null;
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setInt(1, uid);
+	         rs = ps.executeQuery();
+	         if(rs.next()) {
+	            date = rs.getString(1);
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, rs);
+	      }
+	      return date;
+
 	}
 
 	@Override
-	public String getUserLastDate(int u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public String getUserLastDate(int uid) throws SQLException {
+		  Connection con = null;
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      String sql = "select last_update_date from userlist where u_id = ?";
+	      String date=null;
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setInt(1, uid);
+	         rs = ps.executeQuery();
+	         if(rs.next()) {
+	            date = rs.getString(1);
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, rs);
+	      }
+	      return date;
 	}
 
 	@Override
 	public List<Letter> getUserLetterList(int uid) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection con = null;
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      List<Letter> list = new ArrayList<Letter>();
+	      String sql = "select * from USER_LETTER where RECEIVER_ID = ?";
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setInt(1, uid);
+	         
+	         rs=ps.executeQuery();
+	         while(rs.next()) {
+	            uid = rs.getInt(1);
+	            int sender_uid = rs.getInt(2);
+	            int receiver_uid = rs.getInt(3);
+	            String text = rs.getString(4);
+	            String timedate = rs.getString(5);
+	            boolean checked = rs.getBoolean(6);
+	            
+	            Letter letter = new Letter(uid, sender_uid, receiver_uid, text, timedate, checked);
+	            list.add(letter);
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, rs);
+	      }
+	      return list;
 	}
 
 	@Override
-	public String updateUserLastDate(int u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean updateUserLastDate(int uid) throws SQLException {
+		 Connection con = null;
+	      PreparedStatement ps = null;
+	      boolean result=false;
+	      String sql = "update userlist set last_update_date = sysdate where u_id = ?";
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setInt(1, uid);
+	         if(ps.executeUpdate()!=0) {
+	            result=true;
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, null);
+	      }
+	      return result;
+	}
+
+	@Override
+	public boolean setUserLock(int uid, boolean lock) throws SQLException {
+		 Connection con = null;
+	      PreparedStatement ps = null;
+	      boolean result=false;
+	      String sql = "update userlist set  ACCOUNT_LOCKED = ? where u_id = ?";
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setBoolean(1, lock);
+	         ps.setInt(2, uid);
+	         if(ps.executeUpdate()!=0) {
+	            result=true;
+	         }
+	      }finally {
+	         DbUtil.dbClose(con, ps, null);
+	      }
+	      return result;
 	}
 
 }

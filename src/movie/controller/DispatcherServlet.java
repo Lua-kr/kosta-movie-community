@@ -1,6 +1,9 @@
 package movie.controller;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -9,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.lang.reflect.Method;
+import movie.dto.UserDTO;
 
 
 /**
@@ -25,7 +28,7 @@ public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private Map<String, Controller> map;
-	private Map<String, Class<?>> clzMap;;
+	private Map<String, Class<?>> clzMap;
 	
 	@Override
 		public void init() throws ServletException {
