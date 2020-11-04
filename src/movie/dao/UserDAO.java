@@ -147,10 +147,46 @@ public interface UserDAO {
 	 *	@apiNote	[user_letter 테이블] receiver_id 컬럼을 [userlist 테이블] u_id 참조하여
 	 *				[user_letter 테이블] checked 값이 0 인 컬럼의 수를 확인
 	 *
-	 *	@param	int [userlist 테이블] u_id
-	 *	@return	int numAlarms
+	 * @param	int [userlist 테이블] u_id
+	 * @return	int numAlarms
 	 */
 	int getUserNotification(int u_id) throws SQLException;
+	
+	
+	/**
+	 * 	유저 가입 당시 아이피 확인
+	 * 
+	 * @param	[userlist 테이블] u_id
+	 * @return	String ip
+	 */
+	String getUserFirstIP(int u_id) throws SQLException;
+	
+	
+	/**
+	 * 	유저 마지막 로그인 아이피 확인
+	 * 
+	 * @param	[userlist 테이블] u_id
+	 * @return	String ip
+	 */
+	String getUserLastIP(int u_id) throws SQLException;
+	
+	
+	/**
+	 * 	유저 가입 당시 날짜 확인
+	 * 
+	 * @param	[userlist 테이블] u_id
+	 * @return	String date
+	 */
+	String getUserFirstDate(int u_id) throws SQLException;
+	
+	
+	/**
+	 * 	유저 마지막 로그인 날짜 확인
+	 * 
+	 * @param	[userlist 테이블] u_id
+	 * @return	String date
+	 */
+	String getUserLastDate(int u_id) throws SQLException;
 	
 	
 }//UserDAO
