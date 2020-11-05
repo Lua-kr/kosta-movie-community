@@ -24,13 +24,6 @@ public interface AdminDAO {
 	 */
 	boolean AdminSearch(UserDTO user) throws SQLException;
 	
-	
-	/*
-	 *	회원 정보 (수정)
-	 */
-	boolean AdminUpdate(int uid, int points, String roldID) throws SQLException;
-	
-	
 	/*
 	 *	회원 정보 (삭제)
 	 */

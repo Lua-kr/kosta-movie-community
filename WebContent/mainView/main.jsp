@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 7]>
-<html class="ie ie7 no-js" lang="en-US">
+<html class="ie ie7 no-js" lang="en-US"> 
 <![endif]-->
 <!--[if IE 8]>
 <html class="ie ie8 no-js" lang="en-US">
@@ -51,70 +53,7 @@
 <!--end of login form popup-->
 
 <!-- BEGIN | Header -->
-<header class="ht-header">
-	<div class="container">
-		<nav class="navbar navbar-default navbar-custom">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header logo">
-				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					    <span class="sr-only">Toggle navigation</span>
-					    <div id="nav-icon1">
-							<span></span>
-							<span></span>
-							<span></span>
-						</div>
-				    </div>
-				    <a href="index_light.html"><img class="logo" src="../images/logo1.png" alt="" width="119" height="58"></a>
-			    </div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav flex-child-menu menu-left">
-						<li class="hidden">
-							<a href="#page-top"></a>
-						</li>
-						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
-							Home 
-							</a>
-						</li>
-						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							영화<i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="movielist.html">박스 오피스</a></li>
-								<li><a href="moviesingle.html">개봉예정작</a></li>
-							</ul>
-						</li>
-						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							커뮤니티 <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="userfavoritelist.html">즐겨찾기</a></li>
-								<li><a href="userprofile.html">마이프로필</a></li>
-								<li class="it-last"><a href="userrate.html">나의 평점</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li class="btn signupLink"><a href="#">로그인</a></li>
-					</ul>
-				</div>
-			<!-- /.navbar-collapse -->
-	    </nav>
-	    
-	    <!-- top search form -->
-	    <div class="top-search">
-	    	<select>
-				<option value="name">영화제목</option>
-				<option value="genre">장르</option>
-				<option value="country">국가</option>
-			</select>
-			<input type="text" placeholder="검색어 입력">
-	    </div>
-	</div>
-</header>
+	<%@include file="header.jsp" %>
 <!-- END | Header -->
 
 <div class="slider movie-items">
@@ -421,41 +360,7 @@
 
 
 <!-- footer section-->
-<footer class="ht-footer">
-	<div class="container">
-		<div class="flex-parent-ft">
-			<div class="flex-child-ft item1">
-				 <a href="index_light.html"><img class="logo" src="../images/logo1.png" alt=""></a>
-				 <p>접속 무비 월드~</p>
-				<p>Call us: <a href="#">010-5122-2449</a></p>
-			</div>
-			<div class="flex-child-ft item2">
-				<h4>조원</h4>
-				<ul>
-					<li><a href="#">김현민</a></li> 
-					<li><a href="#">최량훈</a></li>
-					<li><a href="#">박세진</a></li>
-				</ul>
-			</div>
-			<div class="flex-child-ft item3">
-				<h4>조원2</h4>
-				<ul>
-					<li><a href="#">김현빈</a></li>
-					<li><a href="#">민지현</a></li>
-					<li><a href="#">임지훈</a></li>
-				</ul>
-			</div>
-			
-			<div class="flex-child-ft item5">
-				<h4>고객센터</h4>
-				<p>이용중 불편사항이나 개선사항이 있다면 <br> 알려주세요</p>
-				<form action="#">
-					<input type="text" placeholder="Enter your email...">
-				</form>
-			</div>
-		</div>
-	</div>
-</footer>
+	<%@include file="footer.jsp" %>
 <!-- end of footer section-->
 
 <script src="../js/jquery.js"></script>
