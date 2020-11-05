@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 
 <style>
-  table {border: 2px double purple; width:666px}
+  table {
+  	border: width:666px;
+  	width: 900px;
+  }
   th{color: white}
   td,th{border:1px purple solid ; text-align: center; padding:5px}
 </style>

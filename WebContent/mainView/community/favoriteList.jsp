@@ -80,28 +80,24 @@
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<div class="sidebar" data-color="purple"
 							data-background-color="white">
-							<a href="#" class="simple-text logo-mini"><h3>활동내역</h3></a><br>
+							<a href="#" id="" class="simple-text logo-mini"><h3>즐겨찾기</h3></a><br>
 							<div class="sidebar-wrapper">
 								<div class="sidebar-inner-list">
 									<ul class="nav" id="nav">
-
-
-										<!-- your sidebar here -->
+										<li class="nav-item active" id="li">
+											<!-- your sidebar here -->
 									</ul>
 
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-9 col-sm-12 col-xs-12">
-						<div class="content">
-							<div class="container-fluid">
-								<!-- your content here -->
-								<iframe src="" name="center" width="700px" height="300px"
-									frameborder="0"></iframe>
-							</div>
-						</div>
-					</div>
+					
+					<!-- your content here -->
+					<iframe
+						src="${pageContext.request.contextPath}/mainView/community/userFavoritelistCenter.jsp"
+						name="center" width="1150px;" height="700px;" frameborder="0"></iframe>
+						
 				</div>
 			</div>
 		</div>
