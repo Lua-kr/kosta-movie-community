@@ -20,7 +20,7 @@
 							<span></span>
 						</div>
 				    </div>
-				    <a href="index_light.html"><img class="logo" src="../images/logo1.png" alt="" width="119" height="58"></a>
+				    <a href="${pageContext.request.contextPath}/index.html"><img class="logo" src="${pageContext.request.contextPath}/images/logo1.png" alt="" width="119" height="58"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -28,8 +28,8 @@
 						<li class="hidden">
 							<a href="#page-top"></a>
 						</li>
-						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
+						<li>
+							<a href="${pageContext.request.contextPath}/index.html" class="btn btn-default dropdown-toggle lv1" >
 							Home 
 							</a>
 						</li>
@@ -38,8 +38,8 @@
 							영화<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="movielist.html">박스 오피스</a></li>
-								<li><a href="moviesingle.html">개봉예정작</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/movie/movielist.jsp">박스 오피스</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/movie/moviesingle.jsp">개봉예정작</a></li>
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -47,9 +47,11 @@
 							커뮤니티 <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="userfavoritelist.jsp">즐겨찾기</a></li>
-								<li><a href="userProfile.jsp">마이프로필</a></li>
-								<li class="it-last"><a href="userrate.jsp">나의 평점</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/community/board.jsp">커뮤니티</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/community/userFavoritelist.jsp">즐겨찾기</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/community/userProfile.jsp">마이프로필</a></li>
+								<li class="it-last"><a href="${pageContext.request.contextPath}/mainView/community/userRate.jsp">나의 평점</a></li>
+								
 							</ul>
 						</li>
 					</ul>

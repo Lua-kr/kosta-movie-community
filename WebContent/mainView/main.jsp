@@ -27,8 +27,8 @@
 	<meta name="format-detection" content="telephone-no">
 
 	<!-- CSS files -->
-	<link rel="stylesheet" href="../css/plugins.css">
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
 </head>
 <body>
@@ -62,7 +62,7 @@
 	    	<div  class="slick-multiItemSlider">
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -74,7 +74,7 @@
 	    		</div>
 				<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -86,7 +86,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider3.jpg" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/slider3.jpg" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -98,7 +98,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -110,7 +110,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -147,7 +147,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item1.jpg" alt="" width="185" height="284">
 					            			</div> 
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -161,7 +161,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -181,7 +181,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -195,7 +195,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -215,7 +215,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -229,7 +229,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item4.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -249,7 +249,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -281,7 +281,7 @@
 				            		<div class="slide-it">
 				            			<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -301,7 +301,7 @@
 									<div class="slide-it">
 										<div class="movie-item">
 					            			<div class="mv-img">
-					            				<img src="../images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
@@ -323,28 +323,28 @@
 					<div class="celebrities">
 						<h4 class="sb-title">Spotlight Celebrities</h4>
 						<div class="celeb-item">
-							<a href="#"><img src="../images/uploads/ava1.jpg" alt="" width="70" height="70"></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava1.jpg" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Samuel N. Jack</a></h6>
 								<span>Actor</span>
 							</div>
 						</div>
 						<div class="celeb-item">
-							<a href="#"><img src="../images/uploads/ava2.jpg" alt="" width="70" height="70"></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava2.jpg" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Benjamin Carroll</a></h6>
 								<span>Actor</span>
 							</div>
 						</div>
 						<div class="celeb-item">
-							<a href="#"><img src="../images/uploads/ava3.jpg" alt="" width="70" height="70"></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava3.jpg" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Beverly Griffin</a></h6>
 								<span>Actor</span>
 							</div>
 						</div>
 						<div class="celeb-item">
-							<a href="#"><img src="../images/uploads/ava4.jpg" alt="" width="70" height="70"></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava4.jpg" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Justin Weaver</a></h6>
 								<span>Actor</span>
@@ -363,10 +363,10 @@
 	<%@include file="footer.jsp" %>
 <!-- end of footer section-->
 
-<script src="../js/jquery.js"></script>
-<script src="../js/plugins.js"></script>
-<script src="../js/plugins2.js"></script>
-<script src="../js/custom.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/js/plugins.js"></script>
+<script src="${pageContext.request.contextPath}/js/plugins2.js"></script>
+<script src="${pageContext.request.contextPath}/js/custom.js"></script>
 </body>
 
 <!-- index_light16:29-->

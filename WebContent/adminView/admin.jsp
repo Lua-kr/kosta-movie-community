@@ -28,23 +28,23 @@
 <meta name="format-detection" content="telephone-no">
 
 <!-- CSS files -->
-<link rel="stylesheet" href="css/plugins.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
 
-<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#user").click(function() {
 			$("#userList").slideToggle(500, function() {
 				$("#userList").click(function() {
-					center.location.href = "admin/user/userList.jsp";
+					center.location.href = "${pageContext.request.contextPath}/admin/user/userList.jsp";
 				});//click
 			});//slideToggle
 
 			$("#blackList").slideToggle(500, function() {
 				$("#blackList").click(function() {
-					center.location.href = "admin/user/blackList.jsp";
+					center.location.href = "${pageContext.request.contextPath}/admin/user/blackList.jsp";
 				});//click
 			});//slideToggle
 
@@ -358,7 +358,7 @@
 		<div class="container">
 			<div class="flex-parent-ft">
 				<div class="flex-child-ft item1">
-					<a href="index-2.html"><img class="logo" src="images/logo1.png"
+					<a href="index-2.html"><img class="logo" src="${pageContext.request.contextPath}/images/logo1.png"
 						alt=""></a>
 					<p>
 						5th Avenue st, manhattan<br> New York, NY 10001
@@ -426,10 +426,10 @@
 	</footer>
 	<!-- end of footer section-->
 
-	<script src="js/jquery.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/plugins2.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="${pageContext.request.contextPath}js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/js/plugins.js"></script>
+	<script src="${pageContext.request.contextPath}js/plugins2.js"></script>
+	<script src="${pageContext.request.contextPath}/js/custom.js"></script>
 </body>
 
 <!-- userprofile_light16:31-->
