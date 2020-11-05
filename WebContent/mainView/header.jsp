@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +68,14 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li class="btn signupLink"><a href="#">로그인</a></li>
+					<c:choose>
+					    <c:when test="${uid eq null}">
+						<li class="btn"><img src="${pageContext.request.contextPath}/images/kakao_login.png" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=f7eccd34f9b5aa5b18e0a8d1257e4cce&redirect_uri=http://localhost:8000/MovieWorld/login&response_type=code'; return false;"></li>
+						</c:when>
+						<c:otherwise>
+							<li class="btn"><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
+						</c:otherwise>
+					</c:choose>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->

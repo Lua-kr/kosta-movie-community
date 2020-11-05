@@ -33,23 +33,17 @@
 </head>
 <body>
 
+
 <!--login form popup-->
-<div class="login-wrapper"  id="signup-content">
+<!-- <div class="login-wrapper"  id="signup-content">
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>Login</h3>
-         <div class="row">
-            <div class="social-btn-2">
-            	<a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
-            </div>
-        </div>
-           <div class="row">
-            <div class="social-btn-2">
-            	<a class="tw" href="#"><i class="ion-social-twitter"></i>twitter</a>
-            </div>
+         <div class="row" align="center">
+			<img src="${pageContext.request.contextPath}/images/kakao_login_medium_narrow.png" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=f7eccd34f9b5aa5b18e0a8d1257e4cce&redirect_uri=http://localhost:8000/MovieWorld/login&response_type=code'; return false;">
         </div>
     </div>
-</div>
+</div> -->
 <!--end of login form popup-->
 
 <!-- BEGIN | Header -->
