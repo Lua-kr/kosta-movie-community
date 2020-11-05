@@ -43,11 +43,12 @@
 							</ul>
 						</li>
 						<li class="dropdown first">
-							<a href="community/board.jsp" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+							<a href="#" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
 							커뮤니티 <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="${pageContext.request.contextPath}/mainView/community/board.jsp">커뮤니티</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/community/board.jsp">자유게시판</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/community/board.jsp">리뷰게시판</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/community/userFavoritelist.jsp">즐겨찾기</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/community/userProfile.jsp">마이프로필</a></li>
 								<li class="it-last"><a href="${pageContext.request.contextPath}/mainView/community/userRate.jsp">나의 평점</a></li>
