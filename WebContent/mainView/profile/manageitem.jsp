@@ -33,20 +33,7 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#profile").click(function() {
-			center.location.href = "";
-		});//click
-
-		$("#active").click(function() {
-			center.location.href = "";
-		});//click
-		
-		$("#item").click(function() {
-			center.location.href = "";
-		});//click
-			
-	});//function
+	
 </script>
 
 
@@ -89,22 +76,11 @@
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<div class="sidebar" data-color="purple"
 							data-background-color="white">
-							<a href="#" class="simple-text logo-mini"><h3>마이프로필</h3></a><br>
+							<a href="#" class="simple-text logo-mini"><h3>아이템관리</h3></a><br>
 							<div class="sidebar-wrapper">
 								<div class="sidebar-inner-list">
 									<ul class="nav" id="nav">
-										<li class="nav-item active" id="li">
-											<p id="profile">프로필관리</p>
-											</a>
-										</li>
-										<li class="nav-item active" id="li">
-											<p id="active">활동내역확인</p>
-											</a>
-										</li>
-										<li class="nav-item active" id="li">
-											<p id="item">아이템관리</p>
-											</a>
-										</li>
+										
 
 										<!-- your sidebar here -->
 									</ul>

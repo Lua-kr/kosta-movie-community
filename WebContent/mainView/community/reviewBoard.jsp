@@ -41,6 +41,18 @@
 				$("#reviewList").click(function() {
 					center.location.href = "${pageContext.request.contextPath}/adminView/board/reviewboard.jsp";
 				});//click
+				
+				$("#favoriteList").click(function() {
+					center.location.href = "${pageContext.request.contextPath}/mainView/community/userFavoritelist.jsp";
+				});//click
+				
+				$("#myProfile").click(function() {
+					center.location.href = "${pageContext.request.contextPath}/mainView/community/userProfile.jsp";
+				});//click
+				
+				$("#myRate").click(function() {
+					center.location.href = "${pageContext.request.contextPath}/mainView/community/userRate.jsp";
+				});//click
 			
 	});//function
 </script>
@@ -85,18 +97,11 @@
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<div class="sidebar" data-color="purple"
 							data-background-color="white">
-							<a href="#" class="simple-text logo-mini"><h3>커뮤니티</h3></a><br>
+							<a href="#" id="freeList" class="simple-text logo-mini"><h3>리뷰게시판</h3></a><br>
 							<div class="sidebar-wrapper">
 								<div class="sidebar-inner-list">
 									<ul class="nav" id="nav">
 										<li class="nav-item active" id="li">
-											<p id="freeList">자유게시판</p>
-											</a>
-										</li>
-										<li class="nav-item active" id="li">
-											<p id="reviewList">리뷰게시판</p>
-											</a>
-										</li>
 
 										<!-- your sidebar here -->
 									</ul>
@@ -110,7 +115,7 @@
 							<div class="content">
 								<div class="container-fluid">
 									<!-- your content here -->
-									<iframe src="${pageContext.request.contextPath}/adminView/board/freeboard.jsp" name="center" width="100%"
+									<iframe src="${pageContext.request.contextPath}/adminView/board/reviewboard.jsp" name="center" width="100%"
 										height="100%" frameborder="0"></iframe>
 								</div>
 							</div>

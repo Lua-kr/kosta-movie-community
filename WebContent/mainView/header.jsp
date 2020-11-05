@@ -47,11 +47,21 @@
 							커뮤니티 <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="${pageContext.request.contextPath}/mainView/community/board.jsp">자유게시판</a></li>
-								<li><a href="${pageContext.request.contextPath}/mainView/community/board.jsp">리뷰게시판</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/community/freeBoard.jsp">자유게시판</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/community/reviewBoard.jsp">리뷰게시판</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/community/userFavoritelist.jsp">즐겨찾기</a></li>
-								<li><a href="${pageContext.request.contextPath}/mainView/community/userProfile.jsp">마이프로필</a></li>
 								<li class="it-last"><a href="${pageContext.request.contextPath}/mainView/community/userRate.jsp">나의 평점</a></li>
+								
+							</ul>
+						</li>
+						<li class="dropdown first">
+							<a href="#" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+							내정보 <i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul class="dropdown-menu level1">
+								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageMyProfile.jsp">프로필관리</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/profile/checkActiving.jsp">활동내역확인</a></li>
+								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageitem.jsp">아이템관리</a></li>
 								
 							</ul>
 						</li>

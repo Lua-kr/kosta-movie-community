@@ -76,7 +76,7 @@
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<div class="sidebar" data-color="purple"
 							data-background-color="white">
-							<a href="#" class="simple-text logo-mini"><h3>즐겨찾기</h3></a><br>
+							<a href="#" class="simple-text logo-mini"><h3>프로필관리</h3></a><br>
 							<div class="sidebar-wrapper">
 								<div class="sidebar-inner-list">
 									<ul class="nav" id="nav">
@@ -107,7 +107,7 @@
 	<!-- footer section-->
 	<%@include file="../footer.jsp" %>
 	<!-- end of footer section-->
-	
+
 	<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 	<script src="${pageContext.request.contextPath}/js/plugins.js"></script>
 	<script src="${pageContext.request.contextPath}/js/plugins2.js"></script>
