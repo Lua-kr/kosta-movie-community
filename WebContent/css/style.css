@@ -4476,7 +4476,7 @@ ul {
 .movie-items,
 .latestnew {
   padding: 70px 0;
-  background-color: #020d18;
+  background-color: white;
 }
 .movie-items .tab-links {
   position: relative;
@@ -5935,7 +5935,7 @@ ul {
   border-bottom: 10px solid transparent;
   border-top: 10px solid transparent;
   border-right: 10px solid #dd003f;
-  /* Tam giác phải được đổ màu */
+  /* Tam gi찼c ph梳즜 휃튼沼즓 휃沼� m횪u */
 }
 .social-btn .hover-bnt:hover .hvr-item {
   -moz-opacity: 1;
