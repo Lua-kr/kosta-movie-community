@@ -1,5 +1,8 @@
 package movie.controller;
 
+import java.sql.SQLException;
+
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
@@ -93,5 +96,61 @@ public class UserController implements Controller {
 	public ModelAndView getUserViewAdult(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return null;
 	}//getUserViewAdult
+	
+	/**
+	 * 	유저 쪽지 전체 목록 불러오기
+	 */
+	public ModelAndView getUserLetterList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//getUserLetterList
+	
+	/**
+	 *	유저 알람 확인
+	 */
+	public ModelAndView getUserNotification(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//getUserNotification
+	
+	/**
+	 * 	유저 가입 당시 아이피 확인
+	 */
+	public ModelAndView getUserFirstIP(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//getUserFirstIP
+	
+	/**
+	 * 	유저 마지막 로그인 아이피 확인
+	 */
+	public ModelAndView getUserLastIP(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//getUserLastIP
+	
+	/**
+	 * 	유저 가입 당시 날짜 확인
+	 */
+	public ModelAndView getUserFirstDate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//getUserFirstDate
+	
+	/**
+	 * 	유저 마지막 로그인 날짜 확인
+	 */
+	public ModelAndView getUserLastDate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//getUserLastDate
+	
+	/**
+	 * 	유저 마지막 로그인 날짜 갱신
+	 */
+	public ModelAndView updateUserLastDate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//updateUserLastDate
+	
+	/**
+	 *	계정 잠금
+	 */
+	public ModelAndView setUserLock(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return null;
+	}//setUserLock
 
 }// class
