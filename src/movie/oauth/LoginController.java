@@ -43,13 +43,11 @@ public class LoginController extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		if (userInfo.get("uid") != null) {
 			if (!(Boolean) userInfo.get("has_email")) {
-				LoginErrorRedirect("Email ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.\\n\\nì¹´ì¹´ì˜¤ ê³„ì •ì— ë“±ë¡í•´ì£¼ì„¸ìš”.", "ì¹´ì¹´ì˜¤ ê³„ì • ê´€ë¦¬ í˜ì´ì§€ë¡œ ê°€ê¸°", "https://accounts.kakao.com/weblogin/account/info/email", pw, request.getContextPath());
+				pw.println("<script>var kakaoEmail = confirm('Email Á¤º¸°¡ ¾ø½À´Ï´Ù.\\n\\nÄ«Ä«¿À °èÁ¤ °ü¸® ÆäÀÌÁö·Î ÀÌµ¿ÇÏ½Ã°Ú½À´Ï±î?'); if (kakaoEmail) location.href = 'https://accounts.kakao.com/weblogin/account/info/email'; else location.href = '" + request.getContextPath() + "/';</script>");
 				return;
 			}
 			
-			boolean needAgreeEmail = (Boolean) userInfo.get("email_needs_agreement");
-			boolean needAgreeAgeRange = (Boolean) userInfo.get("age_range_needs_agreement");
-			if (needAgreeEmail || needAgreeAgeRange) {
+			if ((Boolean) userInfo.get("email_needs_agreement") || (Boolean) userInfo.get("age_range_needs_agreement")) {
 				response.sendRedirect(kakaoapi.kakaoAuthorizeAccessURL(accessToken, "account_email,age_range"));
 				return;
 			}
@@ -62,20 +60,9 @@ public class LoginController extends HttpServlet {
 
 	        request.getRequestDispatcher("/").forward(request, response);
 		} else {
-			pw.append("<script>alert('ì‚¬ìš©ì ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.\\n\\në‹¤ì‹œ ë¡œê·¸ì¸í•˜ì„¸ìš”.');");
-			pw.append("location.href = '" + request.getContextPath() + "/login.jsp';");
+			pw.append("<script>alert('»ç¿ëÀÚ Á¤º¸°¡ ¾ø½À´Ï´Ù.\\n\\n´Ù½Ã ·Î±×ÀÎ ÇØÁÖ¼¼¿ä.');");
+			pw.append("location.href = '" + request.getContextPath() + "/';");
 			pw.append("</script>");
 		}
 	}
-	
-	private void LoginErrorRedirect(String alert, String msg, String URL, PrintWriter pw, String path) {
-		pw.append("<html>");
-		pw.append("<body>");
-		pw.append("<a href='" + URL + "' target='_blank'><h1>" + msg + "</h1></a>");
-		pw.append("<a href='#' onclick='history.back()'><h3>ë’¤ë¡œê°€ê¸°</h3></a>");
-		pw.append("<script>alert('" + alert + "');</script>");
-		pw.append("</body>");
-		pw.append("</html>");
-	}
-
 }
