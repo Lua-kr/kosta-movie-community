@@ -37,7 +37,38 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	
+	$(function() {
+		$("#freeList")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/adminView/board/freeboard.jsp";
+						});//click
+
+		$("#reviewList")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/adminView/board/reviewboard.jsp";
+						});//click
+
+		$("#favoriteList")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/mainView/community/userFavoritelist.jsp";
+						});//click
+
+		$("#myProfile")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/mainView/community/userProfile.jsp";
+						});//click
+
+		$("#myRate")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/mainView/community/userRate.jsp";
+						});//click
+
+	});//function
 </script>
 
 
@@ -80,13 +111,12 @@
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<div class="sidebar" data-color="purple"
 							data-background-color="white">
-							<a href="#" class="simple-text logo-mini"><h3>아이템관리</h3></a><br>
+							<a href="#" id="freeList" class="simple-text logo-mini"><h3>아이템관리</h3></a><br>
 							<div class="sidebar-wrapper">
 								<div class="sidebar-inner-list">
 									<ul class="nav" id="nav">
-
-
-										<!-- your sidebar here -->
+										<li class="nav-item active" id="li">
+											<!-- your sidebar here -->
 									</ul>
 
 								</div>
@@ -97,8 +127,9 @@
 						<div class="content">
 							<div class="container-fluid">
 								<!-- your content here -->
-								<iframe src="" name="center" width="700px" height="300px"
-									frameborder="0"></iframe>
+								<iframe
+									src="${pageContext.request.contextPath}/mainView/profile/itemselect.jsp"
+									name="center" width="1200px" height="700px" frameborder="0"></iframe>
 							</div>
 						</div>
 					</div>
