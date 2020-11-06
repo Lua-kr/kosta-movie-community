@@ -62,7 +62,14 @@
 							<ul class="dropdown-menu level1">
 								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageMyProfile.jsp">프로필관리</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageitem.jsp">아이템관리</a></li>
-								
+								<c:choose>
+								    <c:when test="${uid eq null}">
+									<li class="btn"><img src="${pageContext.request.contextPath}/images/kakao_login.png" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=f7eccd34f9b5aa5b18e0a8d1257e4cce&redirect_uri=http://localhost:8000/MovieWorld/login&response_type=code'; return false;"></li>
+									</c:when>
+									<c:otherwise>
+										<li class="btn"><a href="${pageContext.request.contextPath }/adminView/admin.jsp">관리자모드</a></li>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 						</li>
 					</ul>
