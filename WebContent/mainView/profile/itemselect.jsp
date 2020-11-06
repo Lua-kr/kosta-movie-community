@@ -21,10 +21,6 @@
 </style>
 </head>
 <body>
-    <h2 style="text-align: center;">아이템 관리</h2>
-   
-   
-   	
     <table align="center" >
     	<tbody>
 	        <tr>
