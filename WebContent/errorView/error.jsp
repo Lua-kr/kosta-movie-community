@@ -4,15 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${path}/css/style.css">
 </head>
 <body>
-	죄송합니다. 문제가 발생하였습니다.<br>
-	발생된 문제 : ${requestScope.errorMsg}<br>
-
-	<a href="${pageContext.request.contextPath}/elec?command=list"> 리스트로 돌아가기</a> 
-	<a href="javascript:history.back()">뒤로가기</a>
+	<script>
+		alert('잘못된 페이지 또는 오류가 발생하였습니다.\n\nError: ${requestScope.errorMsg}');
+		location.href = '<%=request.getContextPath()%>/';
+	</script>
 </body>
 </html>
 

@@ -97,7 +97,7 @@
 							<div class="container-fluid">
 								<!-- your content here -->
 								<iframe
-									src="${pageContext.request.contextPath}/adminView/board/freeboard.jsp"
+									src="${pageContext.request.contextPath}/mainView/community/freeBoardCenter.jsp"
 									name="center" width="1000px" height="300px" frameborder="0"></iframe>
 							</div>
 						</div>
