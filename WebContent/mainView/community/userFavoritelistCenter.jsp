@@ -41,7 +41,7 @@
 		<div class="flex-wrap-movielist user-fav-list">
 		<!-- <div class="flex-wrap-movielist grid-fav"> -->
 			<div class="movie-item-style-2 movie-item-style-1 style-3">
-				<img src="${pageContext.request.contextPath}images/uploads/mv1.jpg"
+				<img src="${pageContext.request.contextPath}/images/uploads/mv1.jpg"
 					alt="">
 				<div class="hvr-inner">
 					<a href="${pageContext.request.contextPath}/moviesingle.html">
@@ -365,7 +365,7 @@
 			</div>
 			<div class="movie-item-style-2 movie-item-style-1 style-3">
 				<img
-					src="${pageContext.request.contextPath}images/uploads/mv-item11.jpg"
+					src="${pageContext.request.contextPath}/images/uploads/mv-item11.jpg"
 					alt="">
 				<div class="hvr-inner">
 					<a href="${pageContext.request.contextPath}moviesingle.html">
@@ -404,10 +404,10 @@
 		</div>
 	</div>
 
-	<script src="${pageContext.request.contextPath}js/jquery.js"></script>
-	<script src="${pageContext.request.contextPath}js/plugins.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/js/plugins.js"></script>
 	<script src="${pageContext.request.contextPath}/js/plugins2.js"></script>
-	<script src="${pageContext.request.contextPath}js/custom.js"></script>
+	<script src="${pageContext.request.contextPath}/js/custom.js"></script>
 </body>
 
 <!-- userfavoritegrid_light16:31-->

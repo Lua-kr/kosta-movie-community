@@ -484,7 +484,7 @@
     width: 33.33333333%;
   }
   .col-md-3 {
-    width: 16%;
+    width: 25%;
   }
   .col-md-2 {
     width: 16.66666667%;
@@ -4476,7 +4476,7 @@ ul {
 .movie-items,
 .latestnew {
   padding: 70px 0;
-  background-color: white;
+  background-color: #020d18;
 }
 .movie-items .tab-links {
   position: relative;
@@ -5935,7 +5935,7 @@ ul {
   border-bottom: 10px solid transparent;
   border-top: 10px solid transparent;
   border-right: 10px solid #dd003f;
-  /* Tam gi찼c ph梳즜 휃튼沼즓 휃沼� m횪u */
+  /* Tam giác phải được đổ màu */
 }
 .social-btn .hover-bnt:hover .hvr-item {
   -moz-opacity: 1;
@@ -6514,7 +6514,7 @@ ul {
 .user-pro h4 {
   font-family: 'Dosis', sans-serif;
   font-size: 14px;
-  color: maroon;
+  color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 30px;
@@ -7017,8 +7017,8 @@ p.ceb-single {
   justify-content: space-between;
 }
 .overlay .login-content .social-btn-2 a {
-  width: 343px;
-  height: 50px;
+  width: 50%;
+  height: 42px;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -7026,7 +7026,7 @@ p.ceb-single {
   align-items: center;
   justify-content: center;
   font-family: 'Dosis', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: #ffffff;
   font-weight: 700;
   text-transform: uppercase;
