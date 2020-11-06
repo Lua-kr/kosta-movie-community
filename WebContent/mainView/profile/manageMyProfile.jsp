@@ -37,7 +37,38 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	
+	$(function() {
+		$("#freeList")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/adminView/board/freeboard.jsp";
+						});//click
+
+		$("#reviewList")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/adminView/board/reviewboard.jsp";
+						});//click
+
+		$("#favoriteList")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/mainView/community/userFavoritelist.jsp";
+						});//click
+
+		$("#myProfile")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/mainView/community/userProfile.jsp";
+						});//click
+
+		$("#myRate")
+				.click(
+						function() {
+							center.location.href = "${pageContext.request.contextPath}/mainView/community/userRate.jsp";
+						});//click
+
+	});//function
 </script>
 
 
@@ -76,36 +107,50 @@
 	<div class="buster-light">
 		<div class="page-single">
 			<div class="container">
-				<div class="row ipad-width">
-					<div class="col-md-3 col-sm-12 col-xs-12">
-						<div class="sidebar" data-color="purple"
-							data-background-color="white">
-							<a href="#" class="simple-text logo-mini"><h3>프로필관리</h3></a><br>
-							<div class="sidebar-wrapper">
-								<div class="sidebar-inner-list">
-									<ul class="nav" id="nav">
-
-
-										<!-- your sidebar here -->
-									</ul>
-
-								</div>
-							</div>
-						</div>
-					</div>
+					<div class="leftnav">
+		               <div class="row ipad-width">
+		                  <div class="col-md-3 col-sm-12 col-xs-12">
+		                     <div class="user-information">
+		                        <div class="user-img">
+		                           <a href="#"><img src="${pageContext.request.contextPath}/images/uploads/user-img.png"
+		                              alt=""><br></a> <a href="#" class="redbtn">사진 변경</a><br>
+		                        </div>
+		                     </div>
+		                  </div>
+		               </div>
+		            </div>
+		           
+		               <div class="col-md-3 col-sm-12 col-xs-12">
+		                  <div class="sidebar" data-color="purple"
+		                     data-background-color="white">
+		                     <a href="#" id="freeList" class="simple-text logo-mini"><h3>프로필관리</h3></a><br>
+		                     <div class="sidebar-wrapper">
+		                        <div class="sidebar-inner-list">
+		                           <ul class="nav" id="nav">
+		                              <li class="nav-item active" id="li">
+		                                 <!-- your sidebar here -->
+		                              
+		                           </ul>
+		                        </div>
+		                     </div>
+		                  </div>
+		               </div>
+		        
+					
 					<div class="col-md-9 col-sm-12 col-xs-12">
 						<div class="content">
 							<div class="container-fluid">
 								<!-- your content here -->
-								<iframe src="" name="center" width="700px" height="300px"
-									frameborder="0"></iframe>
+								<iframe
+									src="${pageContext.request.contextPath}/mainView/profile/manageMyProfileCenter.jsp"
+									name="center" width="1000px" height="700px" frameborder="0"></iframe>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	
 	<!-- footer section-->
 	<%@include file="../footer.jsp"%>
 	<!-- end of footer section-->
