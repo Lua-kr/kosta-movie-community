@@ -1,12 +1,14 @@
 package movie.controller;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import movie.dto.ForumPost;
 import movie.dto.ForumThread;
 import movie.service.BoardSerice;
+import movie.service.ForumPostService;
+import movie.service.FreeBoardService;
 
 public class BoardController implements Controller {
 	BoardSerice service = new BoardSerice();
@@ -65,6 +67,90 @@ public class BoardController implements Controller {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	
+	////////////////////////////////////FreeBoard////////////////////////////////
+	public ModelAndView freeBoardInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String text = request.getParameter("text");
+		String title = request.getParameter("title");
+		
+		ForumThread thread = new ForumThread(0, 0, 0, 0, 0, 0, 0, text, title, null);
+		
+		FreeBoardService.freeBoardInsert(thread);
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}//freeBoardInsert
+	
+	
+	public ModelAndView freeBoardUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
+		String text = request.getParameter("text");
+		String title = request.getParameter("title");
+		
+		FreeBoardService.freeBoardUpdate(uid, text, title);
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}//freeBoardUpdate
+	
+	
+	
+	public ModelAndView freeBoardDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
+		
+		FreeBoardService.freeBoardDelete(uid);
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}//freeBoardDelete
+	
+	
+	
+	////////////////////////////////////FreeBoard////////////////////////////////
+	public ModelAndView forumPostInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String text = request.getParameter("text");
+		
+		ForumPost post = new ForumPost(0, text, 0, 0, 0, null);
+		ForumPostService.forumPostInsert(post);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}//forumPostInsert
+	
+	
+	
+	public ModelAndView forumPostUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
+		String text = request.getParameter("text");
+		ForumPostService.forumPostUpdate(uid, text);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}//forumPostUpdate
+
+
+
+	public ModelAndView forumPostDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
+		ForumPostService.forumPostDelete(uid);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}//forumPostDelete
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -44,7 +44,7 @@
 </head>
 <body>
 	<!--login form popup-->
-	<div class="login-wrapper" id="signup-content">
+	<!-- <div class="login-wrapper" id="signup-content">
 		<div class="login-content">
 			<a href="#" class="close">x</a>
 			<h3>Login</h3>
@@ -59,7 +59,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!--end of login form popup-->
 
 	<!-- BEGIN | Header -->
