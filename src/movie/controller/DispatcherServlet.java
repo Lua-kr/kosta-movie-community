@@ -38,9 +38,9 @@ public class DispatcherServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ø‰√ªµ ...");
 		String key= request.getParameter("key");
 		String mName =request.getParameter("mName");
+		System.out.println("app service (key: " + key + ", name: " + mName + ")");
 		if (key != null && !key.isEmpty()) {
 			Controller con = map.get(key);
 			Class<?> cls = clzMap.get(key);
@@ -62,6 +62,7 @@ public class DispatcherServlet extends HttpServlet {
 			}//catch
 		}
 		else {
+			request.setAttribute("errorMsg", "Bad Request");
 			request.getRequestDispatcher("errorView/error.jsp").forward(request, response);
 		}
 	}//service

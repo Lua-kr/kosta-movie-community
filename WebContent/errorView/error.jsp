@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${path}/css/style.css">
 </head>
 <body>
 	<script>
 		alert('잘못된 페이지 또는 오류가 발생하였습니다.\n\nError: ${requestScope.errorMsg}');
-		location.href = '" + request.getContextPath() + "/';
+		location.href = '<%=request.getContextPath()%>/';
 	</script>
 </body>
 </html>
