@@ -2,7 +2,6 @@ package movie.oauth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,16 +24,13 @@ public class LogoutController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 
-		// ë¡œê·¸ì•„ì›ƒ
 		String accessTokenId = (String)session.getAttribute("access_Token");
 		session.invalidate();
 		if (accessTokenId != null && accessTokenId.length() > 0) {
 			System.out.println("logout: " + accessTokenId);
 			kakaoapi.kakaoLogout(accessTokenId);
 			PrintWriter pw = response.getWriter();
-			pw.append("<script>alert('ì„±ê³µì ìœ¼ë¡œ ë¡œê·¸ì•„ì›ƒë˜ì—ˆìŠµë‹ˆë‹¤.');");
-			pw.append("location.href = '" + request.getContextPath() + "/';");
-			pw.append("</script>");
+			pw.println("<script>alert('¼º°øÀûÀ¸·Î ·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.'); location.href = '" + request.getContextPath() + "/';</script>");
 		}
 		else response.sendRedirect(request.getContextPath() + "/");
 	}

@@ -80,13 +80,12 @@
 					<div class="col-md-3 col-sm-12 col-xs-12">
 						<div class="sidebar" data-color="purple"
 							data-background-color="white">
-							<a href="#" class="simple-text logo-mini"><h3>아이템관리</h3></a><br>
+							<a href="#" id="freeList" class="simple-text logo-mini"><h3>아이템관리</h3></a><br>
 							<div class="sidebar-wrapper">
 								<div class="sidebar-inner-list">
 									<ul class="nav" id="nav">
-
-
-										<!-- your sidebar here -->
+										<li class="nav-item active" id="li">
+											<!-- your sidebar here -->
 									</ul>
 
 								</div>
@@ -97,8 +96,9 @@
 						<div class="content">
 							<div class="container-fluid">
 								<!-- your content here -->
-								<iframe src="" name="center" width="700px" height="300px"
-									frameborder="0"></iframe>
+								<iframe
+									src="${pageContext.request.contextPath}/mainView/profile/itemselect.jsp"
+									name="center" width="800px" height="700px" frameborder="0"></iframe>
 							</div>
 						</div>
 					</div>

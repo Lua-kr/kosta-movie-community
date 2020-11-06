@@ -37,38 +37,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#freeList")
-				.click(
-						function() {
-							center.location.href = "${pageContext.request.contextPath}/adminView/board/freeboard.jsp";
-						});//click
-
-		$("#reviewList")
-				.click(
-						function() {
-							center.location.href = "${pageContext.request.contextPath}/adminView/board/reviewboard.jsp";
-						});//click
-
-		$("#favoriteList")
-				.click(
-						function() {
-							center.location.href = "${pageContext.request.contextPath}/mainView/community/userFavoritelist.jsp";
-						});//click
-
-		$("#myProfile")
-				.click(
-						function() {
-							center.location.href = "${pageContext.request.contextPath}/mainView/community/userProfile.jsp";
-						});//click
-
-		$("#myRate")
-				.click(
-						function() {
-							center.location.href = "${pageContext.request.contextPath}/mainView/community/userRate.jsp";
-						});//click
-
-	});//function
+	
 </script>
 
 
@@ -143,7 +112,7 @@
 								<!-- your content here -->
 								<iframe
 									src="${pageContext.request.contextPath}/mainView/profile/manageMyProfileCenter.jsp"
-									name="center" width="1000px" height="700px" frameborder="0"></iframe>
+									name="center" width="1300px" height="900px" frameborder="0"></iframe>
 							</div>
 						</div>
 					</div>

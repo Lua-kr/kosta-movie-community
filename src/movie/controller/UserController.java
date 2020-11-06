@@ -1,19 +1,15 @@
 package movie.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
 
-import movie.dto.UserDTO;
 import movie.service.UserService;
 
 
 public class UserController implements Controller {
 	
-	private  UserService service = new UserService();
+	private UserService service = new UserService();
 	private ModelAndView mv = new ModelAndView();
 
 	@Override

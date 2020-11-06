@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1">
-				 <a href="main.jsp"><img class="logo" src="${pageContext.request.contextPath}/images/logo1.png" alt=""></a>
+				 <a href="${pageContext.request.contextPath }/"><img class="logo" src="${pageContext.request.contextPath}/images/logo1.png" alt=""></a>
 				 <p>접속 무비 월드~</p>
 				<p>Call us: <a href="#">010-5122-2449</a></p>
 			</div>

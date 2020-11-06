@@ -61,7 +61,6 @@
 							</a>
 							<ul class="dropdown-menu level1">
 								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageMyProfile.jsp">프로필관리</a></li>
-								<li><a href="${pageContext.request.contextPath}/mainView/profile/checkActiving.jsp">활동내역확인</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageitem.jsp">아이템관리</a></li>
 								
 							</ul>
