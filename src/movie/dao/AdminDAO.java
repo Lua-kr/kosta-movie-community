@@ -1,6 +1,7 @@
 package movie.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import movie.dto.PointShop;
 import movie.dto.UserDTO;
@@ -22,7 +23,7 @@ public interface AdminDAO {
 	/*
 	 *	회원 정보 (검색)
 	 */
-	boolean AdminSearch(UserDTO user) throws SQLException;
+	List<UserDTO> AdminSearch() throws SQLException;
 	
 	/*
 	 *	회원 정보 (삭제)
@@ -57,7 +58,7 @@ public interface AdminDAO {
 	/**
 	 * 	 포인트 상점 관리(수정)
 	 * */
-	boolean AdminPointUpdate(int uid, String name, String type, String stock) throws SQLException;
+	boolean AdminPointUpdate(int uid, String name, String type, int stock) throws SQLException;
 	
 	
 	/**

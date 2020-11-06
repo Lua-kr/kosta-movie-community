@@ -1,6 +1,7 @@
 package movie.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import movie.dao.AdminDAO;
 import movie.dao.AdminDAOImpl;
@@ -17,6 +18,7 @@ public class AdminService {
 	 * @return	관리자 여부 (0/1 = false/true)
 	 */
 	public static boolean checkAdmin(int uid) throws SQLException {
+		System.out.println("AdminService checkAdmin");
 		boolean result = dao.checkAdmin(uid);
 		if(!result) {
 			throw new SQLException("관리자가 아닙니다.");
@@ -28,9 +30,9 @@ public class AdminService {
 	/*
 	 *	회원 정보 (검색)
 	 */
-	public static boolean AdminSearch(UserDTO user) throws SQLException{
-		boolean result = dao.AdminSearch(user);
-		if(!result) {
+	public static List<UserDTO> AdminSearch() throws SQLException{
+		List<UserDTO> result = dao.AdminSearch();
+		if(result == null) {
 			throw new SQLException("회원 정보 검색 실패");
 		}//if
 		return result;
@@ -99,7 +101,7 @@ public class AdminService {
 	/**
 	 * 	 포인트 상점 관리(수정)
 	 * */
-	public static boolean AdminPointUpdate(int uid, String name, String type, String stock) throws SQLException{
+	public static boolean AdminPointUpdate(int uid, String name, String type, int stock) throws SQLException{
 		boolean result = dao.AdminPointUpdate(uid, name, type, stock);
 		if(!result) {
 			throw new SQLException("포인트 상점 수정 실패");

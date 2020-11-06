@@ -62,7 +62,11 @@
 							<ul class="dropdown-menu level1">
 								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageMyProfile.jsp">프로필관리</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/profile/manageitem.jsp">아이템관리</a></li>
-								
+								<c:choose>
+								    <c:when test="${admin ne null}">
+										<li class="btn"><a href="${pageContext.request.contextPath }/adminView/admin.jsp">관리자모드</a></li>
+									</c:when>
+								</c:choose>
 							</ul>
 						</li>
 					</ul>
