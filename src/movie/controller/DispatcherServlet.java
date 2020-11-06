@@ -23,7 +23,7 @@ import movie.dto.UserDTO;
  * 	  뷰페이지로 이동시킨다.
  * */
 
-@WebServlet(urlPatterns = "/front", loadOnStartup = 1 )
+@WebServlet(urlPatterns = "/app", loadOnStartup = 1 )
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,27 +41,29 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("요청됨...");
 		String key= request.getParameter("key");
 		String mName =request.getParameter("mName");
-		
-		Controller con = map.get(key);
-		Class<?> cls = clzMap.get(key);
-
-		try {
-			Method method =
-					cls.getMethod(mName, HttpServletRequest.class,HttpServletResponse.class);
-			ModelAndView mv =(ModelAndView)method.invoke(con, request, response);
-		
-			if(mv.isRedirect()) {
-				response.sendRedirect(mv.getViewName());
-			}else {
-				request.getRequestDispatcher(mv.getViewName()).forward(request, response);
-			}//else
-		}catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getMessage());
+		if (key != null && !key.isEmpty()) {
+			Controller con = map.get(key);
+			Class<?> cls = clzMap.get(key);
+	
+			try {
+				Method method =
+						cls.getMethod(mName, HttpServletRequest.class,HttpServletResponse.class);
+				ModelAndView mv =(ModelAndView)method.invoke(con, request, response);
+			
+				if(mv.isRedirect()) {
+					response.sendRedirect(mv.getViewName());
+				}else {
+					request.getRequestDispatcher(mv.getViewName()).forward(request, response);
+				}//else
+			}catch (Exception e) {
+				e.printStackTrace();
+				request.setAttribute("errorMsg", e.getMessage());
+				request.getRequestDispatcher("errorView/error.jsp").forward(request, response);
+			}//catch
+		}
+		else {
 			request.getRequestDispatcher("errorView/error.jsp").forward(request, response);
-		}//catch
-		
-		
+		}
 	}//service
 
 }//class
