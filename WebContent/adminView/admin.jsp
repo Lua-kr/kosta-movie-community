@@ -1,88 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7 no-js" lang="en-US">
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8 no-js" lang="en-US">
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html lang="en" class="no-js">
-
-<!-- userprofile_light16:31-->
+<html>
 <head>
-<!-- Basic need -->
-<title>Open Pediatrics</title>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
-<link rel="profile" href="#">
-
-<!--Google Font-->
+<title>Hello, world!</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<!--     Fonts and icons     -->
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 <link rel="stylesheet"
-	href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
-<!-- Mobile specific meta -->
-<meta name=viewport content="width=device-width, initial-scale=1">
-<meta name="format-detection" content="telephone-no">
-
-<!-- CSS files -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-<link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
-
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- Material Kit CSS -->
+<link href="${pageContext.request.contextPath}/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#user").click(function() {
 			$("#userList").slideToggle(500, function() {
 				$("#userList").click(function() {
-					center.location.href = "${pageContext.request.contextPath}/admin/user/userList.jsp";
+					center.location.href = "${pageContext.request.contextPath}/adminView/user/userList.jsp";
 				});//click
 			});//slideToggle
-
+			
 			$("#blackList").slideToggle(500, function() {
 				$("#blackList").click(function() {
-					center.location.href = "${pageContext.request.contextPath}/admin/user/blackList.jsp";
+					center.location.href = "${pageContext.request.contextPath}/adminView/user/blackList.jsp";
 				});//click
 			});//slideToggle
-
+			
 		});//click
-
+		
 		$("#board").click(function() {
 			$("#freeList").slideToggle(500, function() {
 				$("#freeList").click(function() {
-					center.location.href = "admin/board/freeboard.jsp";
+					center.location.href = "${pageContext.request.contextPath}/adminView/board/freeboard.jsp";
 				});//click
 			});//slideToggle
-
+			
 			$("#reviewList").slideToggle(500, function() {
 				$("#reviewList").click(function() {
-					center.location.href = "admin/board/reviewboard.jsp";
+					center.location.href = "${pageContext.request.contextPath}/adminView/board/reviewboard.jsp";
 				});//click
 			});//slideToggle
-
+			
 			$("#delete").slideToggle(500, function() {
 				$("#delete").click(function() {
-					center.location.href = "admin/board/deleteboard.jsp";
+					center.location.href = "${pageContext.request.contextPath}/adminView/board/deleteboard.jsp";
 				});//click
 			});//slideToggle
-
+			
 		});//click
-
+		
 		$("#notice").click(function() {
-			center.location.href = "admin/notice/notice.jsp";
+			center.location.href = "${pageContext.request.contextPath}/adminView/notice/notice.jsp";
 		});//click
-
+		
 		$("#point").click(function() {
-			center.location.href = "admin/point/point.jsp";
+			center.location.href = "${pageContext.request.contextPath}/adminView/point/point.jsp";
 		});//click
-
+		
+		
 	});//function
 </script>
-
-
 </head>
 <body>
 	<div class="wrapper ">
@@ -93,7 +75,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
 			<div class="logo">
-				<a href="template.html" class="simple-text logo-mini"> 관리자 모드 </a> 
+				<a href="${pageContext.request.contextPath}/adminView/admin.jsp" class="simple-text logo-mini"> 관리자 모드 </a> 
 			</div>
 			<div class="sidebar-wrapper">
 				<div class="sidebar-inner-list">
@@ -165,7 +147,7 @@
 			<div class="content">
 				<div class="container-fluid">
 					<!-- your content here -->
-					<iframe src="admin/center.jsp" name="center" width="100%" height="100%" frameborder="0"></iframe>
+					<iframe src="${pageContext.request.contextPath}/adminView/center.jsp" name="center" width="100%" height="100%" frameborder="0"></iframe>
 				</div>
 			</div>
 			<footer class="footer">
@@ -191,6 +173,4 @@
 		</div>
 	</div>
 </body>
-
-<!-- userprofile_light16:31-->
 </html>
