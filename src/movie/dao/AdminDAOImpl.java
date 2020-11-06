@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import movie.dto.Admin;
 import movie.dto.PointShop;
 import movie.dto.UserDTO;
 import movie.util.DbUtil;
@@ -13,7 +14,31 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override
 	public boolean checkAdmin(int uid) throws SQLException {
-		return false;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		boolean result = false;
+		Admin dto = new Admin();
+		String sql = "SELECT * FROM USER_ADMIN WHERE U_ID = ?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, uid);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				dto = new Admin(rs.getInt(1), rs.getInt(2));
+			}//if
+			
+			result = true;
+		}catch(Exception e){
+			result = false;
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}//finally
+		
+		return result;
 	}//checkAdmin
 
 	@Override
