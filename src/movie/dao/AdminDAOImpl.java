@@ -199,7 +199,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}// AdminPointInsert
 
 	@Override
-	public boolean AdminPointUpdate(int uid, String name, String type, String stock) throws SQLException {
+	public boolean AdminPointUpdate(int uid, String name, String type, int stock) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		boolean result = false;
@@ -210,7 +210,7 @@ public class AdminDAOImpl implements AdminDAO {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, name);
 			ps.setString(2, type);
-			ps.setString(3, stock);
+			ps.setInt(3, stock);
 			ps.setInt(4, uid);
 
 			ps.executeUpdate();

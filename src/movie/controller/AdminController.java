@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import movie.dto.PointShop;
 import movie.dto.UserDTO;
 import movie.service.AdminService;
 
@@ -95,24 +96,52 @@ public class AdminController implements Controller {
 	}
 	
 	/**
-	 * 	포인트 상점 관리(추가)
-	 * */
+	 * 포인트 상점 관리(추가)
+	 */
 	public ModelAndView AdminPointInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return null;
+		String uid = request.getParameter("uid");
+		String name = request.getParameter("name");
+		String type = request.getParameter("type");
+		String point = request.getParameter("point");
+		String stock = request.getParameter("stock");
+		String fileId = request.getParameter("fileId");
+		String reqRoldId = request.getParameter("reqRoldId");
+		String locked = request.getParameter("locked");
+
+		PointShop pointshop = new PointShop(Integer.parseInt(uid), name, type, Integer.parseInt(point),
+				Integer.parseInt(stock), Integer.parseInt(fileId), Integer.parseInt(reqRoldId),
+				Integer.parseInt(locked));
+
+		AdminService.AdminPointInsert(pointshop);
+		ModelAndView mv = new ModelAndView();
+
+		return mv;
 	}
-	
+
 	/**
-	 * 	포인트 상점 관리(수정)
-	 * */
+	 * 포인트 상점 관리(수정)
+	 */
 	public ModelAndView AdminPointUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return null;
+		String uid = request.getParameter("uid");
+		String name = request.getParameter("name");
+		String type = request.getParameter("type");
+		String stock = request.getParameter("stock");
+		
+		AdminService.AdminPointUpdate(Integer.parseInt(uid), name, type, Integer.parseInt(stock));
+		ModelAndView mv = new ModelAndView();
+		return mv;
 	}
-	
+
 	/**
-	 * 	포인트 상점 관리(삭제)
-	 * */
+	 * 포인트 상점 관리(삭제)
+	 */
 	public ModelAndView AdminPointDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return null;
+		String uid = request.getParameter("uid");
+		
+		PointShop pointshop = new PointShop(Integer.parseInt(uid));
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
 	}
 	
 	

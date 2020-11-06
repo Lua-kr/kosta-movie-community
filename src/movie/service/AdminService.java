@@ -101,7 +101,7 @@ public class AdminService {
 	/**
 	 * 	 포인트 상점 관리(수정)
 	 * */
-	public static boolean AdminPointUpdate(int uid, String name, String type, String stock) throws SQLException{
+	public static boolean AdminPointUpdate(int uid, String name, String type, int stock) throws SQLException{
 		boolean result = dao.AdminPointUpdate(uid, name, type, stock);
 		if(!result) {
 			throw new SQLException("포인트 상점 수정 실패");

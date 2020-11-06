@@ -58,7 +58,7 @@ public interface AdminDAO {
 	/**
 	 * 	 포인트 상점 관리(수정)
 	 * */
-	boolean AdminPointUpdate(int uid, String name, String type, String stock) throws SQLException;
+	boolean AdminPointUpdate(int uid, String name, String type, int stock) throws SQLException;
 	
 	
 	/**

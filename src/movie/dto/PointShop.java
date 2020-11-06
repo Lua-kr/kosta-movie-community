@@ -22,6 +22,18 @@ public class PointShop {
 		this.reqRoldId = reqRoldId;
 		this.locked = locked;
 	}
+	
+	public PointShop(int id, String name, String type, int stock) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.stock = stock;
+	}
+	
+	public PointShop(int id) {
+		this.id = id;
+	}
+	
 	//getter setter
 	public int getId() {
 		return id;
