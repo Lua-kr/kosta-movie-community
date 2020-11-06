@@ -3,6 +3,8 @@ package movie.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import movie.dao.UserDAO;
 import movie.dao.UserDAOImpl;
 import movie.dto.Letter;
@@ -17,25 +19,27 @@ public class UserService {
 	public static int getUserId(UserDTO user) throws SQLException {
 		int uid = dao.getUserId(user);
 		if (uid == -1) {
-			throw new SQLException("유저고유아이디가 없습니다");
+			throw new SQLException("유저 고유 아이디가 없습니다");
 		}
 		return uid;
 	}
 
+	
 	/**
-	 * 유저 로그인
+	 *	유저 고유 아이디로 유저 클래스 확인
+	 *
+	 * @param	int [userlist 테이블] u_id, HttpSession session (로그인 때를 제외하고는 null 사용)
+	 * @return	UserDTO 클래스
 	 */
-	public static UserDTO userLogin(UserDTO user) throws SQLException {
-		return null;
+	public static UserDTO getUserInfo(int uid, HttpSession session) throws SQLException{
+		UserDTO userInfo = dao.getUserInfo(uid, session);
+		if (userInfo == null) {
+			throw new SQLException("해당하는 유저 고유 정보가 없으며 생성에 실패하였습니다");
+		}
+		return userInfo;
 	}
 
-	/**
-	 * 회원 로그아웃
-	 */
-	public static boolean userLogout(UserDTO user) throws SQLException {
-		return false;
-	}
-
+	
 	/**
 	 * 계정 잠금 여부 확인
 	 */
@@ -63,9 +67,9 @@ public class UserService {
 	/**
 	 * 유저 활동 포인트 설정
 	 */
-	public static int setUserPoints(int uid, int numPoint) throws SQLException {
-		int result = dao.setUserPoints(uid, numPoint);
-		if (result == 0) {
+	public static boolean setUserPoints(int uid, int numPoint) throws SQLException {
+		boolean result = dao.setUserPoints(uid, numPoint);
+		if (!result) {
 			throw new SQLException("유저 활동 포인트 설정 실패");
 		} // if
 

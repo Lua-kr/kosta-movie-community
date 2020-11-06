@@ -1,56 +1,55 @@
 package movie.dto;
 
+import javax.servlet.http.HttpSession;
+
 public class UserDTO {
 	private int uid; // 고유 유저 번호
+	private int roleId; // 등급 번호
 	private String name; // 닉네임
 	private String email;// 메일
-	private String ip;// 아이피
+	private String creIp;// 가입 아이피
 	private String creDate; // 가입일
-	private String lock; // 아이피 밴 유무
+	private boolean lock; // 계정 잠금 유무
 	private String lastDate; // 마지막접속일
 	private String lastIp; // 마지막 접속 아이피
-	private int point; // 활동 포인트
-	private int roleId; // 등급 번호
+	private int points; // 활동 포인트
 	private boolean viewAdult; // 성인 등급 열람 여부
+	private boolean ageAdult; // 나이 성인 여부
+	private HttpSession session; // 사용자 세션
 
-	//정보수정시 ??
-	public UserDTO(String name, String email, String ip, String lastDate, int point) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.ip = ip;
-		this.lastDate = lastDate;
-		this.point = point;
-	}
-
-	public UserDTO(int uid, String name, String email, String ip, String creDate, String lock, String lastDate,
-			String lastIp, int point) {
-		super();
+	// 로그인 시
+	public UserDTO(int uid, int roleId, String name, String email, String creIp, String creDate, boolean lock,
+			String lastDate, String lastIp, int points, boolean viewAdult, boolean ageAdult, HttpSession session) {
 		this.uid = uid;
-		this.name = name;
-		this.email = email;
-		this.ip = ip;
-		this.creDate = creDate;
-		this.lock = lock;
-		this.lastDate = lastDate;
-		this.lastIp = lastIp;
-		this.point = point;
-	}
-	
-	public UserDTO(int uid, String name, String email, String ip, String creDate, String lock, String lastDate,
-			String lastIp, int point, int roleId, boolean viewAdult) {
-		super();
-		this.uid = uid;
-		this.name = name;
-		this.email = email;
-		this.ip = ip;
-		this.creDate = creDate;
-		this.lock = lock;
-		this.lastDate = lastDate;
-		this.lastIp = lastIp;
-		this.point = point;
 		this.roleId = roleId;
+		this.name = name;
+		this.email = email;
+		this.creIp = creIp;
+		this.creDate = creDate;
+		this.lock = lock;
+		this.lastDate = lastDate;
+		this.lastIp = lastIp;
+		this.points = points;
 		this.viewAdult = viewAdult;
+		this.ageAdult = ageAdult;
+		this.session = session;
+	}
+
+	// 가입 시
+	public UserDTO(int uid, String name, String email, String ip, String date, HttpSession session) {
+		this.uid = uid;
+		this.roleId = 0;
+		this.name = name;
+		this.email = email;
+		this.creIp = ip;
+		this.creDate = date;
+		this.lock = false;
+		this.lastDate = date;
+		this.lastIp = ip;
+		this.points = 0;
+		this.viewAdult = false;
+		this.ageAdult = false;
+		this.session = session;
 	}
 
 	// set&get
@@ -71,11 +70,11 @@ public class UserDTO {
 	}
 
 	public String getIp() {
-		return ip;
+		return creIp;
 	}
 
 	public void setIp(String ip) {
-		this.ip = ip;
+		this.creIp = ip;
 	}
 
 	public String getCreDate() {
@@ -86,11 +85,11 @@ public class UserDTO {
 		this.creDate = creDate;
 	}
 
-	public String getLock() {
+	public boolean getLock() {
 		return lock;
 	}
 
-	public void setLock(String lock) {
+	public void setLock(boolean lock) {
 		this.lock = lock;
 	}
 
@@ -111,11 +110,11 @@ public class UserDTO {
 	}
 
 	public int getPoint() {
-		return point;
+		return points;
 	}
 
 	public void setPoint(int point) {
-		this.point = point;
+		this.points = point;
 	}
 
 	public int getRoleId() {
@@ -132,6 +131,30 @@ public class UserDTO {
 
 	public void setViewAdult(boolean viewAdult) {
 		this.viewAdult = viewAdult;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	public boolean isAgeAdult() {
+		return ageAdult;
+	}
+
+	public void setAgeAdult(boolean ageAdult) {
+		this.ageAdult = ageAdult;
+	}
+
+	public String getCreIp() {
+		return creIp;
+	}
+
+	public HttpSession getSession() {
+		return session;
 	};
 
 }// class

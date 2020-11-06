@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import movie.dto.Letter;
 import movie.dto.UserDTO;
 
@@ -12,7 +14,7 @@ import movie.dto.UserDTO;
  * 유저 인터페이스
  */
 public interface UserDAO {
-	
+
 	/**
 	 *	유저 고유 아이디 확인
 	 *
@@ -20,28 +22,16 @@ public interface UserDAO {
 	 * @return	없을 경우 -1, 있으면 [userlist 테이블] u_id
 	 */
 	int getUserId(UserDTO user) throws SQLException;
-	
+
 	
 	/**
-	 *	유저 로그인
+	 *	유저 고유 아이디로 유저 클래스 확인
 	 *
-	 *	TODO:	(로그인 API 기능 구현 후 인수와 리턴 정의)
-	 * 
-	 * @param	(미정) UserDTO user
-	 * @return	(미정) access token 또는 UserDTO user
+	 * @param1	int [userlist 테이블] u_id
+	 * @param2	HttpSession session (로그인 할 때만 값을 주고 그 외에는 null)
+	 * @return	null 또는 UserDTO 클래스
 	 */
-	UserDTO userLogin(UserDTO user) throws SQLException;
-	
-	
-	/**
-	 *	회원 로그아웃
-	 * 
-	 * TODO:	(서버에 저장된 refresh token, access token 삭제)
-	 * 
-	 * @param	UserDTO user
-	 * @return	boolean 성공 여부 (false/true)
-	 */
-	boolean userLogout(UserDTO user) throws SQLException;
+	UserDTO getUserInfo(int uid, HttpSession session) throws SQLException;
 	
 	
 	/**
@@ -67,9 +57,9 @@ public interface UserDAO {
 	 * 
 	 * @param1	int [userlist 테이블] u_id
 	 * @param2	int numPoint
-	 * @return	[user 테이블] points (결과 값)
+	 * @return	boolean 성공 여부 (false/true)
 	 */
-	int setUserPoints(int uid, int numPoint) throws SQLException;
+	boolean setUserPoints(int uid, int numPoint) throws SQLException;
 	
 	
 	/**
@@ -101,6 +91,15 @@ public interface UserDAO {
 	 * @return	int user.roleId
 	 */
 	int getUserRoleId(UserDTO user) throws SQLException;
+	
+	
+	/**
+	 *	유저 닉네임 갱신
+	 *
+	 * @param	UserDTO uid
+	 * @return	성공 여부 (false/true)
+	 */
+	boolean updateUserNickname(int uid, String nickname) throws SQLException;
 	
 	
 	/**

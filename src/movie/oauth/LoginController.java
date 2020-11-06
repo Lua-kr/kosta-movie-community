@@ -2,6 +2,7 @@ package movie.oauth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import movie.controller.UserController;
+import movie.dto.UserDTO;
+
 /**
  * Servlet implementation class KakaoLogin
  */
@@ -19,15 +23,17 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	KakaoAPI kakaoapi = new KakaoAPI();
+	UserController userCtrl = new UserController();
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		
 		HttpSession session = request.getSession();
 		String accessToken = "";
 		if (!session.isNew()) accessToken = (String) session.getAttribute("access_Token");
-		if (accessToken == null) {
+		if (accessToken == null || accessToken.length() < 5) {
 			String authCode = request.getParameter("code");
-			System.out.println("auth code: " + authCode);
+//			System.out.println("auth code: " + authCode);
 			if (authCode != null) accessToken = kakaoapi.getAccessToken(authCode);
 		}
 		else {
@@ -56,13 +62,28 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("nickname", userInfo.get("nickname"));
 			session.setAttribute("age_range", userInfo.get("age_range"));
 			session.setAttribute("profile_img", userInfo.get("profile_img"));
-			session.setAttribute("uid", userInfo.get("uid"));
+			session.setAttribute("ip", request.getRemoteAddr());
+			int uid = Integer.parseInt((String)userInfo.get("uid"));
+			session.setAttribute("uid", uid);
+			UserDTO userDb = null;
+			try {
+				userDb = userCtrl.getUserInfo(uid, session);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				session.invalidate();
+				kakaoapi.kakaoLogout(accessToken);
+				pw.println("<script>alert('사용자 정보가 없습니다.\\n\\n다시 로그인 해주세요.'); location.href = '" + request.getContextPath() + "/'; </script>");
+				return;
+			}
+			System.out.println("=====================\nFinally userDb ?  " + userDb);
+			
+			// TODO: UPDATE LAST IP, DATE
+			// TODO: CHECK ADMIN, AGE ADULT
+			// TODO: ACCOUNT LOCKED
 
 	        request.getRequestDispatcher("/").forward(request, response);
 		} else {
-			pw.append("<script>alert('사용자 정보가 없습니다.\\n\\n다시 로그인 해주세요.');");
-			pw.append("location.href = '" + request.getContextPath() + "/';");
-			pw.append("</script>");
+			pw.println("<script>alert('사용자 정보가 없습니다.\\n\\n다시 로그인 해주세요.'); location.href = '" + request.getContextPath() + "/'; </script>");
 		}
 	}
 }

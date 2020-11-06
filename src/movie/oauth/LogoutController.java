@@ -23,14 +23,13 @@ public class LogoutController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		HttpSession session = request.getSession();
-
 		String accessTokenId = (String)session.getAttribute("access_Token");
-		session.invalidate();
 		if (accessTokenId != null && accessTokenId.length() > 0) {
-			System.out.println("logout: " + accessTokenId);
+			System.out.println("logged out: " + session.getAttribute("nickname") + " (" + session.getAttribute("uid") + ")");
 			kakaoapi.kakaoLogout(accessTokenId);
 			PrintWriter pw = response.getWriter();
 			pw.println("<script>alert('성공적으로 로그아웃 되었습니다.'); location.href = '" + request.getContextPath() + "/';</script>");
+			session.invalidate();
 		}
 		else response.sendRedirect(request.getContextPath() + "/");
 	}
