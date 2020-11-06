@@ -83,12 +83,7 @@
 	    
 	    <!-- top search form -->
 	    <div class="top-search">
-	    	<select>
-				<option value="name">영화제목</option>
-				<option value="genre">장르</option>
-				<option value="country">국가</option>
-			</select>
-			<input type="text" placeholder="검색어 입력">
+			<input type="text" placeholder="영화 검색">
 	    </div>
 	</div>
 </header>
