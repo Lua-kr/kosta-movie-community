@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import movie.dto.UserDTO;
 import movie.service.AdminService;
@@ -19,7 +20,7 @@ public class AdminController implements Controller {
 	 * 	유저의 관리자 여부 확인
 	 * */
 	public ModelAndView checkAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String uid = request.getParameter("uid");
+		String uid = request.getParameter("uid");  HttpSession session = request.getSession();
 		AdminService.checkAdmin(Integer.parseInt(uid));
 		
 		ModelAndView mv = new ModelAndView();
