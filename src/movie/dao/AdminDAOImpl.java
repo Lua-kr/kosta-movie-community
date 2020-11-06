@@ -59,18 +59,19 @@ public class AdminDAOImpl implements AdminDAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int uid = rs.getInt(1); // 고유 유저 번호
-				String name = rs.getString(2); // 닉네임
-				String email = rs.getString(3);// 메일
-				String ip = rs.getString(4);// 아이피
-				String creDate = rs.getString(5); // 가입일
-				String lock = rs.getString(6); // 아이피 밴 유무
-				String lastDate = rs.getString(7); // 마지막접속일
-				String lastIp = rs.getString(8); // 마지막 접속 아이피
-				int point = rs.getInt(9); // 활동 포인트
-				int roleId = rs.getInt(10); // 등급 번호
+				int roleId = rs.getInt(2); // 등급 번호
+				String name = rs.getString(3); // 닉네임
+				String email = rs.getString(4);// 메일
+				String ip = rs.getString(5);// 아이피
+				String creDate = rs.getString(6); // 가입일
+				boolean lock = (rs.getInt(7) != 0); // 아이피 밴 유무
+				String lastDate = rs.getString(8); // 마지막접속일
+				String lastIp = rs.getString(9); // 마지막 접속 아이피
+				int point = rs.getInt(10); // 활동 포인트
 				boolean viewAdult = rs.getBoolean(11); // 성인 등급 열람 여부
+				boolean ageAdult = rs.getBoolean(12); // 성인 등급 열람 여부
 
-				list.add(new UserDTO(uid, name, email, ip, creDate, lock, lastDate, lastIp, point, roleId, viewAdult));
+				list.add(new UserDTO(uid, roleId, name, email, ip, creDate, lock, lastDate, lastIp, point, viewAdult, ageAdult, null));
 			} // while
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
