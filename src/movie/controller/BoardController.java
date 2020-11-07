@@ -14,7 +14,7 @@ import movie.service.BoardService;
 
 public class BoardController implements Controller {
 	BoardSerice service = new BoardSerice();
-
+	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return null;
@@ -25,17 +25,29 @@ public class BoardController implements Controller {
 	public ModelAndView insertReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		int uid = (int)session.getAttribute("uid");
+		int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
 		String text = request.getParameter("text");
 		String title = request.getParameter("title");
 		String movieId = request.getParameter("movieId");
 		String rate = request.getParameter("rate");
 		
+		
 		//인수 넣어서 서비스 보내서 forum_thread 에 insert돌리고 리턴 thread로 하고
-		int threadNo =service.insertReview(new ForumThread(uid,text,title));  
+		int threadNo =service.insert(new ForumThread(uid,text,title));  
+		
+		
 		
 		if (threadNo != 0) { //유효성 체크한후에 serivce.addReview(thread)// thread랑
-			int result = service.addReview(threadNo,movieId,rate);
-		}
+			if(categoryNo == 0) {//자유게시판
+				service.insert(new ForumThread(0, 0, 0, uid, 0, 0, 0, text, title, null));
+			}//if
+			else if(categoryNo == 1) {//댓글
+				ForumPostService.addPost(threadNo, uid, text);
+			}//else if
+			else if(categoryNo == 2) {//리뷰
+				service.addReview(threadNo,movieId,rate);
+			}//else if
+		}//if
 		
 		ModelAndView mv = new ModelAndView("", true);
 		return mv;
@@ -66,7 +78,6 @@ public class BoardController implements Controller {
 		return mv;
 	}		
 	
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	

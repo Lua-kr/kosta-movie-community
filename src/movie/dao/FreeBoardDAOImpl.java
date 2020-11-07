@@ -35,6 +35,9 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 		return result;
 	}//freeBoardInsert
+	
+	
+	
 
 	@Override
 	public int freeBoardUpdate(int authorid, String text, String title) throws SQLException {
