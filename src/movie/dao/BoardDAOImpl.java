@@ -11,11 +11,11 @@ import movie.util.DbUtil;
 public class BoardDAOImpl implements BoardDAO {
 
 	@Override
-	public int insertReview(ForumThread forumThread) throws SQLException {
+	public int insert(ForumThread forumThread) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "insert into forum_thread valuese(ftid_seq.nextval,0,0,0,?,default,default,0,?,?,sysdate)";
+		String sql = "insert into forum_thread values(ftid_seq.nextval,0,0,0,?,default,default,0,?,?,sysdate)";
 		int result = 0;
 		try {
 			con = DbUtil.getConnection();
@@ -25,7 +25,7 @@ public class BoardDAOImpl implements BoardDAO {
 			ps.setString(3, forumThread.getTitle());
 
 			rs = ps.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				result = rs.getInt(1);
 			}
 
@@ -98,5 +98,28 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return result;
 	}//deleteReview
+
+	@Override
+	public int selectcategory() throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT U_ID FROM FORUM_CATEGORY";
+		int result = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}//if
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}//finally
+		
+		return result;
+	}//selectcategory
 	
 }// class

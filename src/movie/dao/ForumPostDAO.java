@@ -10,6 +10,8 @@ public interface ForumPostDAO {
 	 */
 	int forumPostInsert(ForumPost post) throws SQLException;
 	
+	int addPost(int threadNo, int authorid, String text) throws SQLException;
+	
 	/**
 	 * ´ñ±Û ¼öÁ¤
 	 */

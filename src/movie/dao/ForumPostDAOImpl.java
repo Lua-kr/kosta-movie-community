@@ -30,6 +30,27 @@ public class ForumPostDAOImpl implements ForumPostDAO {
 
 		return result;
 	}//forumPostInsert
+	
+	@Override
+	public int addPost(int threadNo, int authorid, String text) throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "INSERT INTO FORUM_POST VALEUS(FPID_SEQ.NEXTVAL,?,?,?,default,SYSDATE)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, text);
+			ps.setInt(2, threadNo);
+			ps.setInt(3, authorid);
+			
+			result = ps.executeUpdate();
+		}finally {
+			DbUtil.dbClose(null, ps);
+		} // finally
+
+		return result;
+	}
+	
 
 	@Override
 	public int forumPostUpdate(int uid, String text) throws SQLException {
@@ -67,5 +88,10 @@ public class ForumPostDAOImpl implements ForumPostDAO {
 		
 		return result;
 	}//forumPostDelete
+
+
+
+
+	
 
 }//ForumPostDAOImpl

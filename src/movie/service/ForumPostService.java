@@ -14,9 +14,16 @@ public class ForumPostService {
 	 */
 	public static int forumPostInsert(ForumPost post) throws SQLException{
 		int result = dao.forumPostInsert(post);
-		if(result == 0) throw new SQLException("댓글 작성 실패");
+		if(result == 0) throw new SQLException("");
 		return result;
 	}//forumPostInsert
+	
+	
+	public static int addPost(int threadNo, int authorid, String text) throws SQLException{
+		int result = dao.addPost(threadNo, authorid, text);
+		if(result == 0) throw new SQLException("댓글 작성 실패");
+		return result;
+	}//addPost
 	
 	/**
 	 * 댓글 수정

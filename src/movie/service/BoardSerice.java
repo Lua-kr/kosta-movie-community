@@ -10,8 +10,8 @@ public class BoardSerice {
 	BoardDAO dao = new BoardDAOImpl();
 
 	/**리뷰작성시 전체글에 추가*/
-	public int insertReview(ForumThread forumThread)throws SQLException {
-		int result = dao.insertReview(forumThread);
+	public int insert(ForumThread forumThread)throws SQLException {
+		int result = dao.insert(forumThread);
 				if(result<=0) {
 					throw new SQLException("글 등록 실패");
 				}
@@ -46,6 +46,20 @@ public class BoardSerice {
 	      }
 	      return result;
 	   }//deleteReview
+
+	   
+	   /**
+	    * 	카테고리
+	    * */
+	   public int selectcategory() throws SQLException{
+		   int result = dao.selectcategory();
+		   
+		   return result;
+	   }//selectcategory
+	   
+	   
+	   
+	   
 	
 
 }//class
