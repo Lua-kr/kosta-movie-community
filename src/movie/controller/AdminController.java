@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import movie.dto.PointShop;
 import movie.dto.UserDTO;
@@ -20,8 +21,9 @@ public class AdminController implements Controller {
 	 * 	유저의 관리자 여부 확인
 	 * */
 	public ModelAndView checkAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String uid = request.getParameter("uid");
-		AdminService.checkAdmin(Integer.parseInt(uid));
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid"); 
+		AdminService.checkAdmin(uid);
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -44,9 +46,10 @@ public class AdminController implements Controller {
 	 * 	회원 정보 (삭제)
 	 * */
 	public ModelAndView AdminDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String uid = request.getParameter("uid");
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
 		
-		AdminService.AdminDelete(Integer.parseInt(uid));
+		AdminService.AdminDelete(uid);
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -58,11 +61,11 @@ public class AdminController implements Controller {
 	 * */
 	public ModelAndView AdminBlackList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
+		String locked = request.getParameter("account_locked");
 		
-		String uid = request.getParameter("uid");
-		String locked = request.getParameter("ACCOUNT_LOCKED");
-		
-		AdminService.AdminBlackList(Integer.parseInt(uid),Integer.parseInt(locked));
+		AdminService.AdminBlackList(uid,Integer.parseInt(locked));
 		ModelAndView mv = new ModelAndView();
 		
 		return mv;
@@ -72,12 +75,12 @@ public class AdminController implements Controller {
 	 * 	게시물 (수정)
 	 * */
 	public ModelAndView AdminBoardUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		String uid = request.getParameter("U_ID");
-		String text = request.getParameter("TEXT");
-		String title = request.getParameter("TITLE");
+		HttpSession session = request.getSession();
+		int uid =(int)session.getAttribute("uid");
+		String text = request.getParameter("text");
+		String title = request.getParameter("title");
 				
-		AdminService.AdminBoardUpdate(Integer.parseInt(uid), text, title);
+		AdminService.AdminBoardUpdate(uid, text, title);
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
@@ -86,11 +89,11 @@ public class AdminController implements Controller {
 	 * 	게시물 (삭제)
 	 * */
 	public ModelAndView AdminBoardDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String uid =request.getParameter("U_ID");
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
 		//String path = request.getServletContext().getRealPath("/save");
 		
-		AdminService.AdminBoardDelete(Integer.parseInt(uid));
+		AdminService.AdminBoardDelete(uid);
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
@@ -99,7 +102,8 @@ public class AdminController implements Controller {
 	 * 포인트 상점 관리(추가)
 	 */
 	public ModelAndView AdminPointInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String uid = request.getParameter("uid");
+		HttpSession session = request.getSession();
+		int uid= (int)session.getAttribute("uid");
 		String name = request.getParameter("name");
 		String type = request.getParameter("type");
 		String point = request.getParameter("point");
@@ -108,7 +112,7 @@ public class AdminController implements Controller {
 		String reqRoldId = request.getParameter("reqRoldId");
 		String locked = request.getParameter("locked");
 
-		PointShop pointshop = new PointShop(Integer.parseInt(uid), name, type, Integer.parseInt(point),
+		PointShop pointshop = new PointShop(uid, name, type, Integer.parseInt(point),
 				Integer.parseInt(stock), Integer.parseInt(fileId), Integer.parseInt(reqRoldId),
 				Integer.parseInt(locked));
 
@@ -122,12 +126,13 @@ public class AdminController implements Controller {
 	 * 포인트 상점 관리(수정)
 	 */
 	public ModelAndView AdminPointUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String uid = request.getParameter("uid");
+		HttpSession session = request.getSession();
+		int uid = (int)session.getAttribute("uid");
 		String name = request.getParameter("name");
 		String type = request.getParameter("type");
 		String stock = request.getParameter("stock");
 		
-		AdminService.AdminPointUpdate(Integer.parseInt(uid), name, type, Integer.parseInt(stock));
+		AdminService.AdminPointUpdate(uid, name, type, Integer.parseInt(stock));
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
@@ -136,9 +141,10 @@ public class AdminController implements Controller {
 	 * 포인트 상점 관리(삭제)
 	 */
 	public ModelAndView AdminPointDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String uid = request.getParameter("uid");
+		HttpSession session = request.getSession();
+		int uid =(int)session.getAttribute("uid");
 		
-		AdminService.AdminDelete(Integer.parseInt(uid));
+		PointShop pointshop = new PointShop(uid);
 		ModelAndView mv = new ModelAndView();
 		
 		return mv;
