@@ -138,7 +138,7 @@ public class AdminController implements Controller {
 	public ModelAndView AdminPointDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String uid = request.getParameter("uid");
 		
-		PointShop pointshop = new PointShop(Integer.parseInt(uid));
+		AdminService.AdminDelete(Integer.parseInt(uid));
 		ModelAndView mv = new ModelAndView();
 		
 		return mv;
