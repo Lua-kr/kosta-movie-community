@@ -57,6 +57,7 @@ public class BoardController implements Controller {
 		      
 		service.deleteReview(Integer.parseInt(uid), Integer.parseInt(authorid));
 		ModelAndView mv = new ModelAndView("", false);
+		
 		      
 		return mv;
 	}		
