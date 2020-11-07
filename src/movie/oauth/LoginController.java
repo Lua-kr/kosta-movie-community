@@ -131,10 +131,6 @@ public class LoginController extends HttpServlet {
 			
 			// 로그인 성공
 			System.out.println("logged in: " + session.getAttribute("nickname") + " (" + session.getAttribute("uid") + ")");
-			
-			
-			// TODO: UPDATE LAST IP, DATE
-			// TODO: CHECK ADMIN (Attribute admin), AGE ADULT
 
 	        request.getRequestDispatcher("/").forward(request, response);
 		} else {
