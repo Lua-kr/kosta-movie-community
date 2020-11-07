@@ -28,6 +28,12 @@ public class ForumThread {
 		this.timeDate = timeDate;
 	}//BoardDTO 기본생성자
 	
+	public ForumThread(int uid, String text, String title) {
+		this.ftId =uid;
+		this.text= text;
+		this.title =title;
+	}//forum_thread (insert)
+	
 	//getter setter
 	public int getFtId() {
 		return ftId;
