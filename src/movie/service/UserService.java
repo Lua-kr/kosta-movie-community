@@ -43,8 +43,8 @@ public class UserService {
 	/**
 	 * 계정 잠금 여부 확인
 	 */
-	public static boolean getUserLocked(int uid) throws SQLException {
-		boolean result = dao.getUserLocked(uid);
+	public static boolean isUserLocked(int uid) throws SQLException {
+		boolean result = dao.isUserLocked(uid);
 		if (result) {// 계정 잠김
 			throw new SQLException("계정이 잠겨있습니다.");
 		} // result
@@ -105,6 +105,17 @@ public class UserService {
 		boolean result = dao.setUserRoleId(user, roleId);
 		if (!result) {
 			throw new SQLException("유저 등급 설정 오류");
+		}
+		return result;
+	}
+
+	/**
+	 * 유저 성인 나이 여부 설정
+	 */
+	public static boolean setUserAgeAdult(int uid, boolean isAdult) throws SQLException {
+		boolean result = dao.setUserAgeAdult(uid, isAdult);
+		if (!result) {
+			throw new SQLException("성인나이 설정 오류");
 		}
 		return result;
 	}
@@ -196,18 +207,6 @@ public class UserService {
 			throw new SQLException("마지막 로그인날자 오류");
 		}
 		return lastDate;
-	}
-
-	/**
-	 * 유저 마지막 로그인 날짜 갱신
-	 */
-	public static boolean updateUserLastDate(int uid) throws SQLException {
-		boolean result = dao.updateUserLastDate(uid);
-		if (!result) {
-			throw new SQLException("유저 마지막 로그인 날짜 갱신 실패...");
-		}
-		return result;
-
 	}
 
 	/**

@@ -38,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean getUserLocked(int uid) throws SQLException {
+	public boolean isUserLocked(int uid) throws SQLException {
 		 Connection con = null;
 	      PreparedStatement ps = null;
 	      ResultSet rs = null;
@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
 	         ps = con.prepareStatement(sql);
 	         ps.setInt(1, uid);
 	         rs = ps.executeQuery();
-	         result = rs.getBoolean(1);
+	         if (rs.next()) result = rs.getBoolean(1);
 	      }finally {
 	         DbUtil.dbClose(con, ps, rs);
 	      }//finally
@@ -61,14 +61,15 @@ public class UserDAOImpl implements UserDAO {
 		 Connection con = null;
 	      PreparedStatement ps = null;
 	      boolean result = false;
-	      String sql = "UPDATE USERLIST SET LAST_UPDATE_DATE = SYSDATE AND LAST_UPDATE_IP = ? WHERE U_ID = ?";
+	      String sql = "UPDATE USERLIST SET LAST_UPDATE_DATE = SYSDATE, LAST_UPDATE_IP = ? WHERE U_ID = ?";
 	      try {
 	         con = DbUtil.getConnection();
 	         ps = con.prepareStatement(sql);
-	         ps.setInt(1, user.getUid());
+	         ps.setString(1, user.getLastIp());
+	         ps.setInt(2, user.getUid());
 	         result = (ps.executeUpdate() != 0);
 	      }catch (Exception e) {
-	         return result;
+	    	  e.printStackTrace();
 	      }finally {
 	         DbUtil.dbClose(con, ps, null);
 	      }//finally
@@ -173,15 +174,34 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public boolean setUserAgeAdult(int uid, boolean isAdult) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		boolean result = false;
+		String sql = "UPDATE USERLIST SET AGE_ADULT = ? WHERE U_ID = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, isAdult?1:0);
+			ps.setInt(2, uid);
+			result = (ps.executeUpdate() != 0);
+		} finally {
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+	}
+
+	@Override
 	public boolean setUserViewAdult(int uid, boolean visible) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		boolean result = false;
-		String sql = "UPDATE USERLIST SET VIEW_ADLUT = ? WHERE U_ID = ?";
+		String sql = "UPDATE USERLIST SET VIEW_ADULT = ? WHERE U_ID = ?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setBoolean(1, visible);
+			ps.setInt(1, visible?1:0);
+			ps.setInt(2, uid);
 			result =  (ps.executeUpdate() != 0);
 		} finally {
 			DbUtil.dbClose(con, ps, null);
@@ -353,25 +373,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean updateUserLastDate(int uid) throws SQLException {
-		 Connection con = null;
-	      PreparedStatement ps = null;
-	      boolean result=false;
-	      String sql = "update userlist set last_update_date = sysdate where u_id = ?";
-	      try {
-	         con = DbUtil.getConnection();
-	         ps = con.prepareStatement(sql);
-	         ps.setInt(1, uid);
-	         if(ps.executeUpdate()!=0) {
-	            result=true;
-	         }
-	      }finally {
-	         DbUtil.dbClose(con, ps, null);
-	      }
-	      return result;
-	}
-
-	@Override
 	public boolean setUserLock(int uid, boolean lock) throws SQLException {
 		 Connection con = null;
 	      PreparedStatement ps = null;
@@ -380,7 +381,7 @@ public class UserDAOImpl implements UserDAO {
 	      try {
 	         con = DbUtil.getConnection();
 	         ps = con.prepareStatement(sql);
-	         ps.setBoolean(1, lock);
+	         ps.setInt(1, lock?1:0);
 	         ps.setInt(2, uid);
 	         result = (ps.executeUpdate() != 0);
 	      }finally {
@@ -407,13 +408,12 @@ public class UserDAOImpl implements UserDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, uid);
 			rs = ps.executeQuery();
-			System.out.println("Trying to reach userlist");
 			if (rs.next()) {
 									// 1UID, 2ROLE_ID, 3NICKNAME, 4EMAIL, 5CREATED_IP, 6CREATED_DATE, 7ACCOUNT_LOCKED, 8LAST_UPDATE_DATE, 9LAST_UPDATE_IP, 10POINTS, 11VIEW_ADULT, 12AGE_ADULT
 				userInfo = new UserDTO(uid, rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), (rs.getInt(7) != 0), rs.getString(8), rs.getString(9), rs.getInt(10), (rs.getInt(11) != 0), (rs.getInt(12) != 0), session);
-				System.out.println("User Info Loaded = " + userInfo);
-			} else if (session != null) { // 계정이 없으므로 생성
-				System.out.println("Nope and insert new one for " + uid);
+				System.out.println("User Load: " + uid);
+			} else if (session != null) { // 로그인 하였으나 DB가 없으므로 최초 생성
+				System.out.println("New User: " + uid);
 				ps.close();
 				rs.close();
 				sql = "insert into userlist(U_ID, NICKNAME, EMAIL, CREATED_IP, CREATED_DATE, LAST_UPDATE_DATE, LAST_UPDATE_IP) values(?, ?, ?, ?, sysdate, sysdate, ?)";
@@ -424,13 +424,8 @@ public class UserDAOImpl implements UserDAO {
 				String ip = (String)session.getAttribute("ip");
 				ps.setString(4, ip);
 				ps.setString(5, ip);
-				rs = ps.executeQuery();
+				if (ps.executeUpdate() > 0) userInfo = getUserInfo(uid, session);
 //				rs = ps.getGeneratedKeys();
-				if (rs.next()) {
-										// 1UID, 2NICKNAME, 3EMAIL, 4CREATED_IP, 5CREATED_DATE, 6LAST_UPDATE_DATE, 7LAST_UPDATE_IP
-					userInfo = new UserDTO(uid, rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), session);
-					System.out.println("User Info Created = " + userInfo);
-				}
 			}
 		} finally {
 			DbUtil.dbClose(con, ps, rs);

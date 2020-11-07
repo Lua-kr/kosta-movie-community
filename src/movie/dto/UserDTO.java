@@ -109,14 +109,6 @@ public class UserDTO {
 		this.lastIp = lastIp;
 	}
 
-	public int getPoint() {
-		return points;
-	}
-
-	public void setPoint(int point) {
-		this.points = point;
-	}
-
 	public int getRoleId() {
 		return roleId;
 	}
