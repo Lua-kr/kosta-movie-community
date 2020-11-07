@@ -123,7 +123,7 @@
 								<!-- your content here -->
 								<iframe
 									src="${pageContext.request.contextPath}/mainView/profile/manageMyProfileCenter.jsp"
-									name="center" width="1300px" height="900px" frameborder="0"></iframe>
+									name="center" width="800px" height="900px" frameborder="0"></iframe>
 							</div>
 						</div>
 					</div>

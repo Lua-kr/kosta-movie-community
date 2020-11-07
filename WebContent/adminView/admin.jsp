@@ -76,6 +76,7 @@
   -->
 			<div class="logo">
 				<a href="${pageContext.request.contextPath}/adminView/admin.jsp" class="simple-text logo-mini"> 관리자 모드 </a> 
+				<a href="${pageContext.request.contextPath}/index.html" class="simple-text logo-mini"> 메인화면 </a> 
 			</div>
 			<div class="sidebar-wrapper">
 				<div class="sidebar-inner-list">
