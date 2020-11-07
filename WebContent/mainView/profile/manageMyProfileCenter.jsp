@@ -93,13 +93,13 @@
 		
 													<div class="col-md-6 form-it">
 														<label>가입일</label> <input type="text"
-															placeholder="2020-11-11">
+															placeholder="2020-11-11" value="${joinDate}">
 													</div>
 													<div class="col-md-6 form-it">
-														<label>활동점수</label> <input type="text" placeholder="80">
+														<label>활동점수</label> <input type="text" placeholder="80" value="${points}">
 													</div>
 													<div class="col-md-6 form-it">
-														<label>성인인증여부</label> <input type="text" placeholder="성인">
+														<label>성인인증여부</label> <input type="text" placeholder="성인" value="${adult}">
 													</div>
 												</div>
 		
