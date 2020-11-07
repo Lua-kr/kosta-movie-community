@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,40 +33,84 @@
 	<div class="row ipad-width">
 							<div class="col-md-9 col-sm-12 col-xs-12">
 								<div class="form-style-1 user-pro" action="#">
-									<form action="#" class="user">
-										<h4>나의 프로필</h4>
-										<div class="row">
-											<div class="col-md-6 form-it">
-												<label>아이디</label> <input type="text"
-													placeholder="edwardkennedy">
-											</div>
-											<div class="col-md-6 form-it">
-												<label>닉네임</label> <input type="text"
-													placeholder="edwardkennedy">
-											</div>
-											<div class="col-md-6 form-it">
-												<label>이메일</label> <input type="text"
-													placeholder="edward@kennedy.com">
-											</div>
-
-											<div class="col-md-6 form-it">
-												<label>가입일</label> <input type="text"
-													placeholder="2020-11-11">
-											</div>
-											<div class="col-md-6 form-it">
-												<label>활동점수</label> <input type="text" placeholder="80">
-											</div>
-											<div class="col-md-6 form-it">
-												<label>성인인증여부</label> <input type="text" placeholder="성인">
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-2">
-												<input class="submit" type="submit" value="save">
-											</div>
-										</div>
-									</form>
+										<c:choose>
+											<c:when test="${uid == null}">
+											<form action="#" class="user">
+												<h4>나의 프로필</h4>
+												<div class="row">
+													<div class="col-md-6 form-it">
+													
+														<label>아이디</label> <input type="text"
+															placeholder="id">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>닉네임</label> <input type="text"
+															placeholder="pwd">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>이메일</label> <input type="text"
+															placeholder="edward@kennedy.com">
+													</div>
+		
+													<div class="col-md-6 form-it">
+														<label>가입일</label> <input type="text"
+															placeholder="2020-11-11">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>활동점수</label> <input type="text" placeholder="80">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>성인인증여부</label> <input type="text" placeholder="성인">
+													</div>
+												</div>
+		
+												<div class="row">
+													<div class="col-md-2">
+														<input class="submit" type="submit" value="save">
+													</div>
+												</div>
+											</form>
+										</c:when>
+										
+										
+										<c:otherwise>
+											<form action="#" class="user">
+												<h4>나의 프로필</h4>
+												<div class="row">
+													<div class="col-md-6 form-it">
+													
+														<label>아이디</label> <input type="text"
+															placeholder="id" value="${uid}">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>닉네임</label> <input type="text"
+															placeholder="pwd" value="${nickname}">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>이메일</label> <input type="text"
+															placeholder="edward@kennedy.com" value="${email}">
+													</div>
+		
+													<div class="col-md-6 form-it">
+														<label>가입일</label> <input type="text"
+															placeholder="2020-11-11">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>활동점수</label> <input type="text" placeholder="80">
+													</div>
+													<div class="col-md-6 form-it">
+														<label>성인인증여부</label> <input type="text" placeholder="성인">
+													</div>
+												</div>
+		
+												<div class="row">
+													<div class="col-md-2">
+														<input class="submit" type="submit" value="save">
+													</div>
+												</div>
+											</form>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</div>

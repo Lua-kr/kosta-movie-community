@@ -68,6 +68,7 @@ public class LoginController extends HttpServlet {
 			UserDTO userDb = null;
 			try {
 				userDb = userCtrl.getUserInfo(uid, session);
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 				session.invalidate();

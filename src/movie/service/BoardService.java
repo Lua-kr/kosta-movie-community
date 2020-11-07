@@ -6,7 +6,7 @@ import movie.dao.BoardDAO;
 import movie.dao.BoardDAOImpl;
 import movie.dto.ForumThread;
 
-public class BoardSerice {
+public class BoardService {
 	BoardDAO dao = new BoardDAOImpl();
 
 	/**리뷰작성시 전체글에 추가*/

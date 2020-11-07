@@ -6,12 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import movie.dto.ForumPost;
 import movie.dto.ForumThread;
-import movie.service.BoardSerice;
+import movie.service.BoardService;
 import movie.service.ForumPostService;
 import movie.service.FreeBoardService;
 
 public class BoardController implements Controller {
-	BoardSerice service = new BoardSerice();
+	BoardService service = new BoardService();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
