@@ -51,7 +51,7 @@ public class LoginController extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		if (userInfo.get("uid") != null) {
 			if (!(Boolean) userInfo.get("has_email")) {
-				pw.println("<script>var kakaoEmail = confirm('Email Á¤º¸°¡ ¾ø½À´Ï´Ù.\\n\\nÄ«Ä«¿À °èÁ¤ °ü¸® ÆäÀÌÁö·Î ÀÌµ¿ÇÏ½Ã°Ú½À´Ï±î?'); if (kakaoEmail) location.href = 'https://accounts.kakao.com/weblogin/account/info/email'; else location.href = '" + request.getContextPath() + "/';</script>");
+				pw.println("<script>var kakaoEmail = confirm('Email ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.\\n\\nì¹´ì¹´ì˜¤ ê³„ì • ê´€ë¦¬ í˜ì´ì§€ë¡œ ì´ë™í•˜ì‹œê² ìŠµë‹ˆê¹Œ?'); if (kakaoEmail) location.href = 'https://accounts.kakao.com/weblogin/account/info/email'; else location.href = '" + request.getContextPath() + "/';</script>");
 				return;
 			}
 			
@@ -59,18 +59,23 @@ public class LoginController extends HttpServlet {
 				response.sendRedirect(kakaoapi.kakaoAuthorizeAccessURL(accessToken, "account_email,age_range"));
 				return;
 			}
+
+			if (userInfo.get("age_range") == null) {
+				pw.println("<script>var kakaoAge = confirm('ìƒë…„ì›”ì¼ (ì—°ë ¹ëŒ€) ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.\\n\\nì¹´ì¹´ì˜¤ ê³„ì • ê´€ë¦¬ í˜ì´ì§€ë¡œ ì´ë™í•˜ì‹œê² ìŠµë‹ˆê¹Œ?'); if (kakaoAge) location.href = 'https://accounts.kakao.com/weblogin/account/profile'; else location.href = '" + request.getContextPath() + "/';</script>");
+				return;
+			}
 			
 			int uid = Integer.parseInt((String)userInfo.get("uid"));
 			session.setAttribute("uid", uid);
 			UserDTO userClass = null;
 			try {
-				// °èÁ¤ Àá±İ È®ÀÎ
+				// ê³„ì • ì ê¸ˆ í™•ì¸
 				if (UserService.isUserLocked(uid)) {
-					loginFailed("°èÁ¤ÀÌ Àá°ÜÀÖ½À´Ï´Ù.\\n\\n°ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇÏ¼¼¿ä.", accessToken, session, request.getContextPath(), pw);
+					loginFailed("ê³„ì •ì´ ì ê²¨ìˆìŠµë‹ˆë‹¤.\\n\\nê´€ë¦¬ìì—ê²Œ ë¬¸ì˜í•˜ì„¸ìš”.", accessToken, session, request.getContextPath(), pw);
 					return;
 				}
 				
-				// °ü¸®ÀÚ È®ÀÎ
+				// ê´€ë¦¬ì í™•ì¸
 				if (AdminService.checkAdmin(uid)) {
 					session.setAttribute("admin", 1);
 					System.out.println("Admin: " + uid);
@@ -87,16 +92,16 @@ public class LoginController extends HttpServlet {
 				String ip = request.getRemoteAddr();
 				session.setAttribute("ip", ip);
 				
-				// À¯Àú Á¤º¸ È®ÀÎ ¹× À¯Àú Å¬·¡½º »ı¼º
+				// ìœ ì € ì •ë³´ í™•ì¸ ë° ìœ ì € í´ë˜ìŠ¤ ìƒì„±
 				userClass = UserService.getUserInfo(uid, session);
 				
 				session.setAttribute("joinDate", userClass.getCreDate());
 				session.setAttribute("points", userClass.getPoints());
 
-				// ¸¶Áö¸· IP °»½Å
+				// ë§ˆì§€ë§‰ IP ê°±ì‹ 
 				userClass.setLastIp(ip);
 				
-				// ¸¶Áö¸· ³¯Â¥ °»½Å
+				// ë§ˆì§€ë§‰ ë‚ ì§œ ê°±ì‹ 
 				SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 				String today = sdf.format(System.currentTimeMillis());
 				System.out.println(today);
@@ -105,14 +110,14 @@ public class LoginController extends HttpServlet {
 
 				UserService.updateUserLastLogin(userClass);
 
-				// ¼ºÀÎ ³ªÀÌ ¼³Á¤
+				// ì„±ì¸ ë‚˜ì´ ì„¤ì •
 				boolean isAdult = userClass.isAgeAdult();
 				if (age > 19) {
 					if (!isAdult) {
 						UserService.setUserAgeAdult(uid, true);
 						userClass.setAgeAdult(true);
 					}
-					System.out.println("User: " + session.getAttribute("nickname") + " ´ÔÀº ¼ºÀÎÀ¸·Î È®ÀÎµÇ¾ú½À´Ï´Ù.");
+					System.out.println("User: " + session.getAttribute("nickname") + " ë‹˜ì€ ì„±ì¸ìœ¼ë¡œ í™•ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.");
 					session.setAttribute("adult", true);
 				}
 				else {
@@ -121,23 +126,23 @@ public class LoginController extends HttpServlet {
 						userClass.setAgeAdult(false);
 					}
 					session.setAttribute("adult", false);
-					System.out.println("User: " + session.getAttribute("nickname") + " ´ÔÀº ¹Ì¼º³âÀÚ·Î È®ÀÎµÇ¾ú½À´Ï´Ù.");
+					System.out.println("User: " + session.getAttribute("nickname") + " ë‹˜ì€ ë¯¸ì„±ë…„ìë¡œ í™•ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				}
 			} catch (SQLException e) {
-				loginFailed("»ç¿ëÀÚ Á¤º¸°¡ ¾ø½À´Ï´Ù.\\n\\n´Ù½Ã ·Î±×ÀÎ ÇØÁÖ¼¼¿ä.", accessToken, session, request.getContextPath(), pw);
+				loginFailed("ì‚¬ìš©ì ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.\\n\\në‹¤ì‹œ ë¡œê·¸ì¸ í•´ì£¼ì„¸ìš”.", accessToken, session, request.getContextPath(), pw);
 				e.printStackTrace();
 				return;
 			}
-			
-			// ·Î±×ÀÎ ¼º°ø
+
+			// ë¡œê·¸ì¸ ì„±ê³µ
 			System.out.println("logged in: " + session.getAttribute("nickname") + " (" + session.getAttribute("uid") + ")");
 
 	        request.getRequestDispatcher("/").forward(request, response);
 		} else {
-			pw.println("<script>alert('»ç¿ëÀÚ Á¤º¸°¡ ¾ø½À´Ï´Ù.\\n\\n´Ù½Ã ·Î±×ÀÎ ÇØÁÖ¼¼¿ä.'); location.href = '" + request.getContextPath() + "/'; </script>");
+			pw.println("<script>alert('ì‚¬ìš©ì ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.\\n\\në‹¤ì‹œ ë¡œê·¸ì¸ í•´ì£¼ì„¸ìš”.'); location.href = '" + request.getContextPath() + "/'; </script>");
 		}
 	}
-	
+
 	private void loginFailed(String msg, String accessToken, HttpSession session, String path, PrintWriter pw) {
 		System.out.println("Log-in failed: " + session.getAttribute("uid"));
 		session.invalidate();
