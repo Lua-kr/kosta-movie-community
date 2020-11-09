@@ -60,7 +60,7 @@ public class BoardService {
 	   }//selectReview
 
 	   
-	   /**s
+	   /**
 	    * 	카테고리
 	    * */
 	   public int selectcategory() throws SQLException{
@@ -68,6 +68,16 @@ public class BoardService {
 		   
 		   return result;
 	   }//selectcategory
+	   
+	   /**
+	    *     게시판 전체 조회
+	    * */
+	   public List<ForumThread> selectBoardAll(int categoryNo) throws SQLException{
+	      List<ForumThread> list = dao.selectBoardAll(categoryNo);
+	      if(list == null) throw new SQLException("게시판 검색 실패");
+	      return list;
+	  
+	   }//selectReview
 	   
 	   
 	   

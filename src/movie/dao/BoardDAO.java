@@ -33,6 +33,15 @@ public interface BoardDAO {
 	 * 리뷰(조회)
 	 */
 	List<ForumThread> selectReview(int categoryNo) throws SQLException;
+
+	
+	/**
+	 * 전체 게시글 조회
+	 * @param categoryNo
+	 * @return
+	 * @throws SQLException
+	 */
+	List<ForumThread> selectBoardAll(int categoryNo) throws SQLException;
 	
 	
 	

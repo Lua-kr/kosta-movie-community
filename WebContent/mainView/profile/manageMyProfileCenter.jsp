@@ -53,31 +53,31 @@
 													<div class="col-md-6 form-it">
 													
 														<label>아이디</label> <input type="text"
-															placeholder="id" value="${uid}">
+															placeholder="id" value="${uid}" disabled>
 													</div>
 													<div class="col-md-6 form-it">
 														<label>닉네임</label> <input type="text"
-															placeholder="pwd" value="${nickname}">
+															placeholder="pwd" value="${nickname}" disabled>
 													</div>
 													<div class="col-md-6 form-it">
 														<label>이메일</label> <input type="text"
-															placeholder="edward@kennedy.com" value="${email}">
+															placeholder="edward@kennedy.com" value="${email}" disabled>
 													</div>
 		
 													<div class="col-md-6 form-it">
 														<label>가입일</label> <input type="text"
-															placeholder="2020-11-11" value="${joinDate}">
+															placeholder="2020-11-11" value="${joinDate}" disabled>
 													</div>
 													<div class="col-md-6 form-it">
-														<label>활동점수</label> <input type="text" placeholder="80" value="${points}">
+														<label>활동점수</label> <input type="text" placeholder="80" value="${points}" disabled>
 													</div>
 													<div class="col-md-6 form-it">
 													<c:choose>
 														<c:when test="${adult}">
-															<label>성인 인증 여부</label> <input type="text" placeholder="성인" value="성인">
+															<label>성인 인증 여부</label> <input type="text" placeholder="성인" value="성인" disabled>
 														</c:when>
 														<c:otherwise>
-															<label>성인 인증 여부</label> <input type="text" placeholder="성인" value="미성년자">
+															<label>성인 인증 여부</label> <input type="text" placeholder="성인" value="미성년자" disabled>
 														</c:otherwise>
 													</c:choose>
 													</div>

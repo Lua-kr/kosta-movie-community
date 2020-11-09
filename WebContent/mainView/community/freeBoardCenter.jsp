@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,21 +19,27 @@
 </style>
 </head>
 <body>
-   
     <table align="center" >
         <tr bgcolor=purple>
-          
-        <th>번호</th><th>제목</th><th>글쓴이</th><th>등록일</th><th>조회수</th>
+	        <th>번호</th><th>제목</th><th>글쓴이</th><th>등록일</th><th>조회수</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-     
-        </tr>              
-   
+		    <c:choose>
+			    <c:when test="${empty requestScope.list}">
+	     	   <tr>
+				    <td colspan="5"><h5>Empty :&lt;</h5></td>
+			    </c:when>
+			    <c:otherwise>
+					<c:forEach items="${requestScope.list}" var="board">
+				        <tr>
+				            <td>${board.ftId}</td>
+				            <td>${board.title}</td>
+				            <td>${board.authorId}</td>
+				            <td>${board.timeDate}</td>
+				            <td>${board.countRead}</td>
+				        </tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
      <tr>  
         <td colspan="7"> <br/>
             <form name="serach" method ="post">

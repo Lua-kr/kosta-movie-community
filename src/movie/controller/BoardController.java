@@ -175,6 +175,15 @@ public class BoardController implements Controller {
 		return mv;
 	}//forumPostDelete
 	
+	public ModelAndView freeBoardSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<ForumThread> list = new ArrayList<ForumThread>();
+		//int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
+		list = service.selectBoardAll(0); // 0 = FreeBoard
+		request.setAttribute("list", list);
+		ModelAndView mv = new ModelAndView("/mainView/community/freeBoardCenter.jsp", false);
+		return mv;
+	}
+	
 	
 	
 	
