@@ -1,6 +1,7 @@
 package movie.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import movie.dao.ForumPostDAO;
 import movie.dao.ForumPostDAOImpl;
@@ -8,6 +9,13 @@ import movie.dto.ForumPost;
 
 public class ForumPostService {
 	private static ForumPostDAO dao = new ForumPostDAOImpl();
+	
+	public static List<ForumPost> selectForumPost() throws SQLException{
+		List<ForumPost> list = dao.selectForumPost();
+		if(list == null) throw new SQLException("검색 실패");
+		return list;
+	}
+	
 	
 	/**
 	 * 댓글 작성

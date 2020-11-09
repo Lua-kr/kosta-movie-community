@@ -36,9 +36,9 @@ public class AdminController implements Controller {
 	public ModelAndView AdminSearch(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<UserDTO> list = AdminService.AdminSearch();
 		request.setAttribute("list", list);
-		
+		String path = request.getServletContext().getRealPath("/");
 		ModelAndView mv = new ModelAndView();
-		
+		mv.setViewName(path + "/adminView/user/userList.jsp");
 		return mv;
 	}//AdminSearch
 

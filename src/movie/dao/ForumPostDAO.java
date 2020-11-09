@@ -1,10 +1,14 @@
 package movie.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import movie.dto.ForumPost;
 
 public interface ForumPostDAO {
+	List<ForumPost> selectForumPost() throws SQLException;
+	
+	
 	/**
 	 * ¥Ò±€ ¿€º∫
 	 */

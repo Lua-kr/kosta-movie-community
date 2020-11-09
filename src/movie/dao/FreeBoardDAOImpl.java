@@ -2,12 +2,39 @@ package movie.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import movie.dto.ForumThread;
 import movie.util.DbUtil;
 
 public class FreeBoardDAOImpl implements FreeBoardDAO {
+	
+	@Override
+	public List<ForumThread> SelectBoardAll(int categoryNum) throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<ForumThread> list = new ArrayList<ForumThread>();
+		String sql = "select * from forum_thread where forum_category_id = ?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, categoryNum);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new ForumThread(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+			}
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return list;
+	}
 
 	@Override
 	public int freeBoardInsert(ForumThread thread) throws SQLException {
@@ -76,5 +103,10 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 		return result;
 	}//freeBoardDelete
+
+
+
+
+	
 
 }//FreeBoardDAOImpl

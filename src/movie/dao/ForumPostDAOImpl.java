@@ -2,13 +2,40 @@ package movie.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import movie.dto.ForumPost;
 import movie.util.DbUtil;
 
 public class ForumPostDAOImpl implements ForumPostDAO {
-
+	
+	@Override
+	public List<ForumPost> selectForumPost() throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "";
+		List<ForumPost> list = new ArrayList<ForumPost>();
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new ForumPost(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+			}
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return list;
+	}
+	
+	
 	@Override
 	public int forumPostInsert(ForumPost post) throws SQLException {
 		Connection con = DbUtil.getConnection();
@@ -88,6 +115,8 @@ public class ForumPostDAOImpl implements ForumPostDAO {
 		
 		return result;
 	}//forumPostDelete
+
+	
 
 
 

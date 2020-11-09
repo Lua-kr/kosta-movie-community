@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,8 @@
           
         <th>아이디</th><th>이름</th><th>비밀번호</th><th>나이</th><th>주소</th><th>주민번호</th><th>&nbsp;</th>
         </tr>
-        <tr>
+        <c:forEach items="${list}" var="list" varStatus="status">
+        	<tr>
             <td></td>
             <td></td>
             <td></td>
@@ -31,7 +33,9 @@
             <td></td>
             <td></td>
             <td><input type="button" value="삭제"></td> 
-        </tr>              
+        </tr>
+        </c:forEach>
+                      
    
      <tr>  
         <td colspan="7"> <br/>

@@ -1,6 +1,7 @@
 package movie.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import movie.dao.FreeBoardDAO;
 import movie.dao.FreeBoardDAOImpl;
@@ -8,6 +9,12 @@ import movie.dto.ForumThread;
 
 public class FreeBoardService {
 	private static FreeBoardDAO dao = new FreeBoardDAOImpl();
+	
+	public static List<ForumThread> SelectFreeBoard(int categoryNum) throws SQLException{
+		List<ForumThread> list = dao.SelectBoardAll(categoryNum);
+		if(list == null) throw new SQLException("검색실패");
+		return list;
+	}
 	
 	/**
 	 * 자유게시판 작성

@@ -6,6 +6,14 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#free").click(function() {
+			location.href = "/MovieWorld/app?k=board&v=freeBoardSelect";
+		});
+	});//
+</script>
 </head>
 <body>
 	<header class="ht-header">
@@ -48,7 +56,7 @@
 							커뮤니티 <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="${pageContext.request.contextPath}/mainView/community/freeBoard.jsp">자유게시판</a></li>
+								<li><form method="post"><a href="#" id="free">자유게시판</a></form></li>
 								<li><a href="${pageContext.request.contextPath}/app?k=board&v=selectReview">리뷰게시판</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/community/favoriteList.jsp">즐겨찾기</a></li>
 								<li class="it-last"><a href="${pageContext.request.contextPath}/mainView/community/userRate.jsp">나의 평점</a></li>
