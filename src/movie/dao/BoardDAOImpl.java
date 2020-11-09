@@ -112,7 +112,7 @@ public class BoardDAOImpl implements BoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<ForumThread> list = new ArrayList<ForumThread>();
-		String sql = "select * from forum_thread where forum_category_id=?";
+		String sql = "select t.* , r.movie_id,r.RATE from forum_thread t ,FORUM_REVIEW where t.u_id =r.THREAD_ID and t.FORUM_CATEGORY_ID=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);

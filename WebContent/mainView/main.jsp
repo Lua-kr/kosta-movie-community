@@ -1,5 +1,14 @@
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.IOException"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.Map,com.google.gson.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7 no-js" lang="en-US"> 
@@ -12,32 +21,37 @@
 
 <!-- index_light16:05-->
 <head>
-	<!-- Basic need -->
-	<title>Open Pediatrics</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="">
-	<link rel="profile" href="#">
+<!-- Basic need -->
+<title>Open Pediatrics</title>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<link rel="profile" href="#">
 
-    <!--Google Font-->
-    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
-	<!-- Mobile specific meta -->
-	<meta name=viewport content="width=device-width, initial-scale=1">
-	<meta name="format-detection" content="telephone-no">
+<!--Google Font-->
+<link rel="stylesheet"
+	href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+<!-- Mobile specific meta -->
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone-no">
 
-	<!-- CSS files -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugin1.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugin2.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugin3.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<!-- CSS files -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/plugin1.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/plugin2.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/plugin3.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css">
+
 
 </head>
 <body>
 
-
-<!--login form popup-->
-<!-- <div class="login-wrapper"  id="signup-content">
+	<!--login form popup-->
+	<!-- <div class="login-wrapper"  id="signup-content">
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>Login</h3>
@@ -46,372 +60,467 @@
         </div>
     </div>
 </div> -->
-<!--end of login form popup-->
+	<!--end of login form popup-->
 
-<!-- BEGIN | Header -->
-	<%@include file="header.jsp" %>
-<!-- END | Header -->
+	<!-- BEGIN | Header -->
+	<%@include file="header.jsp"%>
+	<!-- END | Header -->
 
 
-<div class="slider movie-items">
-	<div class="container">
-		<div class="row">
-	    	<div  class="slick-multiItemSlider">
-	    		<div class="movie-item">
-	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="blue"><a href="#">Sci-fi</a></span>
-	    				</div>
-	    				<h6><a href="#">Interstellar</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-				<div class="movie-item">
-	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="yell"><a href="#">action</a></span>
-	    				</div>
-	    				<h6><a href="#">The revenant</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-	    		<div class="movie-item">
-	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider3.jpg" alt="" width="285" height="437"></a>
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="green"><a href="#">comedy</a></span>
-	    				</div>
-	    				<h6><a href="#">Die hard</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-	    		<div class="movie-item">
-	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-	    				</div>
-	    				<h6><a href="#">The walk</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-	    		<div class="movie-item">
-	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="blue"><a href="#">Sci-fi</a></span>
-	    				</div>
-	    				<h6><a href="#">Interstellar</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-				<div class="movie-item">
-	    			<div class="mv-img">
-	    				<a href="#"><img src="../images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="yell"><a href="#">action</a></span>
-	    				</div>
-	    				<h6><a href="#">The revenant</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-	    		<div class="movie-item">
-	    			<div class="mv-img">
-	    				<img src="../images/uploads/slider3.jpg" alt="" width="285" height="437">
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="green"><a href="#">comedy</a></span>
-	    				</div>
-	    				<h6><a href="#">Die hard</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-	    		<div class="movie-item">
-	    			<div class="mv-img">
-	    				<img src="../images/uploads/slider4.jpg" alt="" width="285" height="437">
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-	    				</div>
-	    				<h6><a href="#">The walk</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-	    		<div class="movie-item">
-	    			<div class="mv-img">
-	    				<img src="../images/uploads/slider3.jpg" alt="" width="285" height="437">
-	    			</div>
-	    			<div class="title-in">
-	    				<div class="cate">
-	    					<span class="green"><a href="#">comedy</a></span>
-	    				</div>
-	    				<h6><a href="#">Die hard</a></h6>
-	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	    			</div>
-	    		</div>
-	    	</div>
-	    </div>
-	</div>
-</div>
-
-<!-- ------------------- -->
-<div class="movie-items">
-	<div class="container">
-		<div class="row ipad-width">
-			<div class="col-md-8">
-				<div class="title-hd">
-					<h2>영화 추천</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
-				</div>
-				<div class="tabs">
-					<ul class="tab-links">
-						<li class="active"><a href="#tab1">#Popular</a></li>
-						<li><a href="#tab2"> #Coming soon</a></li>
-						<li><a href="#tab3">  #Top rated  </a></li>
-					</ul>
-				    <div class="tab-content">
-				        <div id="tab1" class="tab active">
-				            <div class="row">
-				            	<div class="slick-multiItem">
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item1.jpg" alt="" width="185" height="284">
-					            			</div> 
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">Interstellar</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">The walk</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            	</div>
-				            </div>
-				        </div>
-				        <div id="tab2" class="tab">
-				           <div class="row">
-				            	<div class="slick-multiItem">
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">The walk</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">Die hard</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            	</div>
-				            </div>
-				        </div>
-				        <div id="tab3" class="tab">
-				        	<div class="row">
-				            	<div class="slick-multiItem">
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">Die hard</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item4.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">The walk</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            	</div>
-				            </div>
-			       	 	</div>
-			       	 	<div id="tab4" class="tab">
-				        	<div class="row">
-				            	<div class="slick-multiItem">
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">Die hard</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            	</div>
-				            </div>
-			       	 	</div>
-				    </div>
-				</div>
-				<div class="title-hd">
-					<h2>최근 작성글</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
-				</div>
-				<div class="tabs">
-					<ul class="tab-links-2">
-						<li><a href="#tab21">#자유 게시판</a></li>
-						<li class="active"><a href="#tab22"> #리뷰 게시판 </a></li>
-					</ul>
-				    <div class="tab-content">
-				        <div id="tab21" class="tab">
-				            <div class="row">
-				            	<div class="slick-multiItem">
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">Die hard</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
-				            	</div>
-				            </div>
-				        </div>
-				        <div id="tab22" class="tab active">
-				           <div class="row">
-				            	<div class="slick-multiItem">
-									<div class="slide-it">
-										<div class="movie-item">
-					            			<div class="mv-img">
-					            				<img src="${pageContext.request.contextPath}/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="#">The revenant</a></h6>
-					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-					            			</div>
-					            		</div>
-									</div>
-				            	</div>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="sidebar">
-					<div class="celebrities">
-						<h4 class="sb-title">Spotlight Celebrities</h4>
-						<div class="celeb-item">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava1.jpg" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Samuel N. Jack</a></h6>
-								<span>Actor</span>
-							</div>
+	<div class="slider movie-items">
+		<div class="container">
+			<div class="row">
+				<div class="slick-multiItemSlider">
+					<div class="movie-item">
+						<div class="mv-img">
+							<img src="../images/uploads/slider3.jpg" alt="" width="285"
+								height="437">
 						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava2.jpg" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Benjamin Carroll</a></h6>
-								<span>Actor</span>
+						<div class="title-in">
+							<div class="cate">
+								<span class="green"><a href="#">comedy</a></span>
 							</div>
+							<h6>
+								<a href="#">Die hard</a>
+							</h6>
+							<p>
+								<i class="ion-android-star"></i><span>7.4</span> /10
+							</p>
 						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava3.jpg" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Beverly Griffin</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/ava4.jpg" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Justin Weaver</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-						<a href="#" class="btn">See all celebrities<i class="ion-ios-arrow-right"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
+	<!-- ------------------- -->
+
+	<div class="movie-items">
+		<div class="container">
+			<div class="row ipad-width">
+				<div class="col-md-8">
+					<div class="title-hd">
+						<h2>영화 추천</h2>
+						<a href="#" class="viewall">View all <i
+							class="ion-ios-arrow-right"></i></a>
+					</div>
+					<div class="tabs">
+						<ul class="tab-links">
+							<li class="active"><a href="#tab0">#All</a></li>
+							<li><a href="#tab1">#Popular</a></li>
+							<li><a href="#tab2"> #Coming soon</a></li>
+							<li><a href="#tab3"> #Top rated </a></li>
+						</ul>
+						<div class="tab-content">
+						
+						<div id="tab0" class="tab active"></div>
+						
+							<div id="tab1" class="tab active">
+								<div class="row">
+									<div class="slick-multiItem">
+										<%
+											BufferedReader br;
+										try {
+											String urlstr = "https://api.themoviedb.org/3/movie/popular?&language=en-US&page=1&api_key=1409aaea037c127f018d970de4a17783";
+											URL url = new URL(urlstr);
+											HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+											urlconnection.setRequestMethod("GET");
+
+											// 결과 코드가 200이라면 성공
+											int responseCode = urlconnection.getResponseCode();
+											//System.out.println("search responseCode : " + responseCode);
+
+											if (responseCode == 200) {
+												br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+												String result = "";
+												String line = "";
+												while ((line = br.readLine()) != null) {
+											result += line;
+												}
+												//response.getWriter().append(result + "<hr>");
+												System.out.println("result : " + result);
+
+												// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+												JsonElement element = new JsonParser().parse(result);
+												JsonArray results = element.getAsJsonObject().get("results").getAsJsonArray();
+												JsonObject obj;
+												Map<String, JsonObject> map = new HashMap<String, JsonObject>();
+												for (int i = 0; i < results.size(); i++) {
+											//System.out.println("index " + i + " =  " + results.get(i) + "\n");
+											obj = (JsonObject) results.get(i);
+											map.put(Integer.toString(i), obj);
+												}
+												br.close();
+												Set<String> set = map.keySet();
+												Iterator<String> keys = set.iterator();
+
+												String key = keys.next();
+												JsonObject jobj = map.get(key);
+
+												while (keys.hasNext()) {
+											key = keys.next();
+											jobj = map.get(key);
+
+											if (jobj.get("title").isJsonNull()) {
+												jobj.addProperty("title", "null");
+											}
+											if (jobj.get("poster_path").isJsonNull()) {
+												jobj.addProperty("poster_path", "null");
+											}
+											if (jobj.get("vote_average").isJsonNull()) {
+												jobj.addProperty("vote_average", "null");
+											}
+										%>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img
+														src="https://image.tmdb.org/t/p/w300<%=jobj.get("poster_path").getAsString()%>"
+														alt="포스터" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i
+														class="ion-android-arrow-dropright"></i>
+													</a>
+												</div>
+												<div class="title-in">
+													<h6>
+														<a href="#"><%=jobj.get("title")%></a>
+													</h6>
+													<p>
+														<i class="ion-android-star"></i><span><%=jobj.get("vote_average").getAsString()%></span> /10
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<%
+											} //while
+										} // if
+										} catch (IOException e) {
+										// e.printStackTrace();
+										System.out.println("search Error: " + e.getMessage());
+										} // catch
+										%>
+									</div>
+								</div>
+							</div>
+							<div id="tab2" class="tab active">
+								<div class="row">
+									<div class="slick-multiItem">
+										<%
+										try {
+											String urlstr = "https://api.themoviedb.org/3/movie/upcoming?&language=ko-kr&page=1&api_key=1409aaea037c127f018d970de4a17783";
+											URL url = new URL(urlstr);
+											HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+											urlconnection.setRequestMethod("GET");
+
+											// 결과 코드가 200이라면 성공
+											int responseCode = urlconnection.getResponseCode();
+											//System.out.println("search responseCode : " + responseCode);
+
+											if (responseCode == 200) {
+												br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+												String result = "";
+												String line = "";
+												while ((line = br.readLine()) != null) {
+											result += line;
+												}
+												//response.getWriter().append(result + "<hr>");
+												System.out.println("result : " + result);
+
+												// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+												JsonElement element = new JsonParser().parse(result);
+												JsonArray results = element.getAsJsonObject().get("results").getAsJsonArray();
+												JsonObject obj;
+												Map<String, JsonObject> map = new HashMap<String, JsonObject>();
+												for (int i = 0; i < results.size(); i++) {
+											//System.out.println("index " + i + " =  " + results.get(i) + "\n");
+											obj = (JsonObject) results.get(i);
+											map.put(Integer.toString(i), obj);
+												}
+												br.close();
+												Set<String> set = map.keySet();
+												Iterator<String> keys = set.iterator();
+
+												String key = keys.next();
+												JsonObject jobj = map.get(key);
+
+												while (keys.hasNext()) {
+											key = keys.next();
+											jobj = map.get(key);
+
+											if (jobj.get("title").isJsonNull()) {
+												jobj.addProperty("title", "null");
+											}
+											if (jobj.get("poster_path").isJsonNull()) {
+												jobj.addProperty("poster_path", "null");
+											}
+											if (jobj.get("vote_average").isJsonNull()) {
+												jobj.addProperty("vote_average", "null");
+											}
+										%>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img
+														src="https://image.tmdb.org/t/p/w300<%=jobj.get("poster_path").getAsString()%>"
+														alt="포스터" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i
+														class="ion-android-arrow-dropright"></i>
+													</a>
+												</div>
+												<div class="title-in">
+													<h6>
+														<a href="#"><%=jobj.get("title")%></a>
+													</h6>
+													<p>
+														<i class="ion-android-star"></i><span><%=jobj.get("vote_average").getAsString()%></span> /10
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<%
+											} //while
+										} // if
+										} catch (IOException e) {
+										// e.printStackTrace();
+										System.out.println("search Error: " + e.getMessage());
+										} // catch
+										%>
+									</div>
+								</div>
+							</div>
+							<div id="tab3" class="tab active">
+								<div class="row">
+									<div class="slick-multiItem">
+										<%
+										try {
+											String urlstr = "https://api.themoviedb.org/3/movie/top_rated?&language=en-US&page=1&api_key=1409aaea037c127f018d970de4a17783";
+											URL url = new URL(urlstr);
+											HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+											urlconnection.setRequestMethod("GET");
+
+											// 결과 코드가 200이라면 성공
+											int responseCode = urlconnection.getResponseCode();
+											//System.out.println("search responseCode : " + responseCode);
+
+											if (responseCode == 200) {
+												br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+												String result = "";
+												String line = "";
+												while ((line = br.readLine()) != null) {
+											result += line;
+												}
+												//response.getWriter().append(result + "<hr>");
+												System.out.println("result : " + result);
+
+												// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+												JsonElement element = new JsonParser().parse(result);
+												JsonArray results = element.getAsJsonObject().get("results").getAsJsonArray();
+												JsonObject obj;
+												Map<String, JsonObject> map = new HashMap<String, JsonObject>();
+												for (int i = 0; i < results.size(); i++) {
+											//System.out.println("index " + i + " =  " + results.get(i) + "\n");
+											obj = (JsonObject) results.get(i);
+											map.put(Integer.toString(i), obj);
+												}
+												br.close();
+												Set<String> set = map.keySet();
+												Iterator<String> keys = set.iterator();
+
+												String key = keys.next();
+												JsonObject jobj = map.get(key);
+
+												while (keys.hasNext()) {
+											key = keys.next();
+											jobj = map.get(key);
+
+											if (jobj.get("title").isJsonNull()) {
+												jobj.addProperty("title", "null");
+											}
+											if (jobj.get("poster_path").isJsonNull()) {
+												jobj.addProperty("poster_path", "null");
+											}
+											if (jobj.get("vote_average").isJsonNull()) {
+												jobj.addProperty("vote_average", "null");
+											}
+										%>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img
+														src="https://image.tmdb.org/t/p/w300<%=jobj.get("poster_path").getAsString()%>"
+														alt="포스터" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i
+														class="ion-android-arrow-dropright"></i>
+													</a>
+												</div>
+												<div class="title-in">
+													<h6>
+														<a href="#"><%=jobj.get("title")%></a>
+													</h6>
+													<p>
+														<i class="ion-android-star"></i><span><%=jobj.get("vote_average").getAsString()%></span> /10
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<%
+											} //while
+										} // if
+										} catch (IOException e) {
+										// e.printStackTrace();
+										System.out.println("search Error: " + e.getMessage());
+										} // catch
+										%>
+									</div>
+								</div>
+							</div> <!-- tag3 -->
+						</div>
+					</div>
+					<div class="title-hd">
+						<h2>최근 작성글</h2>
+						<a href="#" class="viewall">View all <i
+							class="ion-ios-arrow-right"></i></a>
+					</div>
+					<div class="tabs">
+						<ul class="tab-links-2">
+							<li><a href="#tab21">#자유 게시판</a></li>
+							<li class="active"><a href="#tab22"> #리뷰 게시판 </a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="tab21" class="tab">
+								<div class="row">
+									<div class="slick-multiItem">
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img
+														src="${pageContext.request.contextPath}/images/uploads/mv-item3.jpg"
+														alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i
+														class="ion-android-arrow-dropright"></i>
+													</a>
+												</div>
+												<div class="title-in">
+													<h6>
+														<a href="#">Die hard</a>
+													</h6>
+													<p>
+														<i class="ion-android-star"></i><span>7.4</span> /10
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab22" class="tab active">
+								<div class="row">
+									<div class="slick-multiItem">
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img
+														src="${pageContext.request.contextPath}/images/uploads/mv-item6.jpg"
+														alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i
+														class="ion-android-arrow-dropright"></i>
+													</a>
+												</div>
+												<div class="title-in">
+													<h6>
+														<a href="#">The revenant</a>
+													</h6>
+													<p>
+														<i class="ion-android-star"></i><span>7.4</span> /10
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="sidebar">
+						<div class="celebrities">
+							<h4 class="sb-title">Spotlight Celebrities</h4>
+							<div class="celeb-item">
+								<a href="#"><img
+									src="${pageContext.request.contextPath}/images/uploads/ava1.jpg"
+									alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6>
+										<a href="#">Samuel N. Jack</a>
+									</h6>
+									<span>Actor</span>
+								</div>
+							</div>
+							<div class="celeb-item">
+								<a href="#"><img
+									src="${pageContext.request.contextPath}/images/uploads/ava2.jpg"
+									alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6>
+										<a href="#">Benjamin Carroll</a>
+									</h6>
+									<span>Actor</span>
+								</div>
+							</div>
+							<div class="celeb-item">
+								<a href="#"><img
+									src="${pageContext.request.contextPath}/images/uploads/ava3.jpg"
+									alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6>
+										<a href="#">Beverly Griffin</a>
+									</h6>
+									<span>Actor</span>
+								</div>
+							</div>
+							<div class="celeb-item">
+								<a href="#"><img
+									src="${pageContext.request.contextPath}/images/uploads/ava4.jpg"
+									alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6>
+										<a href="#">Justin Weaver</a>
+									</h6>
+									<span>Actor</span>
+								</div>
+							</div>
+							<a href="#" class="btn">See all celebrities<i
+								class="ion-ios-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
-<!-- footer section-->
-	<%@include file="footer.jsp" %>
-<!-- end of footer section-->
+	<!-- footer section-->
+	<%@include file="footer.jsp"%>
+	<!-- end of footer section-->
 
-<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/js/plugins.js"></script>
-<script src="${pageContext.request.contextPath}/js/plugins2.js"></script>
-<script src="${pageContext.request.contextPath}/js/custom.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/js/plugins.js"></script>
+	<script src="${pageContext.request.contextPath}/js/plugins2.js"></script>
+	<script src="${pageContext.request.contextPath}/js/custom.js"></script>
 </body>
 
 <!-- index_light16:29-->

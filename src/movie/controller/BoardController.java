@@ -89,8 +89,9 @@ public class BoardController implements Controller {
 		int categoryNo =0;
 		service.selectReview(categoryNo);
 		request.setAttribute("list", list);
+		System.out.println(list);
 		      
-		ModelAndView mv = new ModelAndView("reviewBoardcenter.jsp", false);
+		ModelAndView mv = new ModelAndView("reviewBoardCenter.jsp", false);
 		      
 		return mv;
 	}
