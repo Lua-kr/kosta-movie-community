@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -36,10 +36,10 @@
 										<c:choose>
 											<c:when test="${uid == null}">
 											<form action="#" class="user">
-												<h4>³ªÀÇ ÇÁ·ÎÇÊ</h4>
+												<h4>ë‚˜ì˜ í”„ë¡œí•„</h4>
 												<div class="row">
 													<div class="col-md-6 form-it">
-														<h5 style="color: skyblue;">·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.</h5>
+														<h5 style="color: skyblue;">ë¡œê·¸ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.</h5>
 													</div>
 												</div>
 											</form>
@@ -47,37 +47,37 @@
 										
 										
 										<c:otherwise>
-											<form action="#" class="user">
-												<h4>³ªÀÇ ÇÁ·ÎÇÊ</h4>
+											<form method="post" action="${pageContext.request.contextPath}/app?k=user&v=updateUserNickname" class="user">
+												<h4>ë‚˜ì˜ í”„ë¡œí•„</h4>
 												<div class="row">
 													<div class="col-md-6 form-it">
 													
-														<label>¾ÆÀÌµð</label> <input type="text"
-															placeholder="id" value="${uid}" disabled>
+														<label>ì•„ì´ë””</label> <input type="text"
+															 value="${uid}" name="name">
 													</div>
 													<div class="col-md-6 form-it">
-														<label>´Ð³×ÀÓ</label> <input type="text"
-															placeholder="pwd" value="${nickname}" disabled>
+														<label>ë‹‰ë„¤ìž„</label> <input type="text"
+															 value="${nickname}" name="nickname">
 													</div>
 													<div class="col-md-6 form-it">
-														<label>ÀÌ¸ÞÀÏ</label> <input type="text"
-															placeholder="edward@kennedy.com" value="${email}" disabled>
+														<label>ì´ë©”ì¼</label> <input type="text"
+															 value="${email}" name="email">
 													</div>
 		
 													<div class="col-md-6 form-it">
-														<label>°¡ÀÔÀÏ</label> <input type="text"
-															placeholder="2020-11-11" value="${joinDate}" disabled>
+														<label>ê°€ìž…ì¼</label> <input type="text"
+															 value="${joinDate}" name="joindate">
 													</div>
 													<div class="col-md-6 form-it">
-														<label>È°µ¿Á¡¼ö</label> <input type="text" placeholder="80" value="${points}" disabled>
+														<label>í™œë™ì ìˆ˜</label> <input type="text" value="${points}" name="points">
 													</div>
 													<div class="col-md-6 form-it">
 													<c:choose>
 														<c:when test="${adult}">
-															<label>¼ºÀÎ ÀÎÁõ ¿©ºÎ</label> <input type="text" placeholder="¼ºÀÎ" value="¼ºÀÎ" disabled>
+															<label>ì„±ì¸ ì¸ì¦ ì—¬ë¶€</label> <input type="text"  value="ì„±ì¸" name="adult">
 														</c:when>
 														<c:otherwise>
-															<label>¼ºÀÎ ÀÎÁõ ¿©ºÎ</label> <input type="text" placeholder="¼ºÀÎ" value="¹Ì¼º³âÀÚ" disabled>
+															<label>ì„±ì¸ ì¸ì¦ ì—¬ë¶€</label> <input type="text"  value="ë¯¸ì„±ë…„ìž" name="underage">
 														</c:otherwise>
 													</c:choose>
 													</div>

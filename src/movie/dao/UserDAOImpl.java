@@ -392,8 +392,23 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean updateUserNickname(int uid, String nickname) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		
+		  Connection con = null;
+	      PreparedStatement ps = null;
+	      boolean result = false;
+	      String sql = "UPDATE USERLIST SET NICKNAME = ? WHERE U_ID = ?";
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement(sql);
+	         ps.setString(1,nickname);
+	         ps.setInt(2,uid);
+	         result = (ps.executeUpdate() != 0);
+	      }catch (Exception e) {
+	    	  e.printStackTrace();
+	      }finally {
+	         DbUtil.dbClose(con, ps, null);
+	      }//finally
+	      return result;
 	}
 
 	@Override

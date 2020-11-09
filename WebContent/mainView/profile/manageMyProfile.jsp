@@ -135,6 +135,7 @@
 			</div>
 		</div>
 	
+	
 	<!-- footer section-->
 	<%@include file="../footer.jsp"%>
 	<!-- end of footer section-->

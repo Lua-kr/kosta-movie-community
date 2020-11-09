@@ -3,8 +3,11 @@ package movie.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import movie.controller.ModelAndView;
 import movie.dao.UserDAO;
 import movie.dao.UserDAOImpl;
 import movie.dto.Letter;
@@ -219,5 +222,20 @@ public class UserService {
 		}
 		return result;
 	}
+
+	
+
+	/**
+	 * 유저 닉네임 수정
+	 * */
+	public static boolean updateUserNickname(int uid, String nickname) throws SQLException {
+		boolean result = dao.updateUserNickname(uid, nickname);
+		if(!result) {
+			throw new SQLException("닉네임 수정오류");
+		}
+		return result;
+	}
+	
+	
 
 }

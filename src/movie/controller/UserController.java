@@ -1,5 +1,6 @@
 package movie.controller;
 
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -96,5 +97,29 @@ public class UserController implements Controller {
 	public ModelAndView getUserViewAdult(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return null;
 	}//getUserViewAdult
+	
+	/**
+	 * 유저 닉네임 수정
+	 * */
+	
+	public ModelAndView updateUserNickname(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		System.out.println("updateUserNickname 호출...");
+		int uid =(int)session.getAttribute("uid");
+		String nickname = request.getParameter("nickname");
+		System.out.println("uid" + uid);
+		System.out.println("nickname" + nickname);
+		if (UserService.updateUserNickname(uid, nickname)) {
+			UserDTO user = UserService.getUserInfo(uid, null);
+			user.setName(nickname);
+			session.setAttribute("nickname", nickname);
+		}
+		ModelAndView mv = new ModelAndView();
+		PrintWriter out = response.getWriter();
+		mv.setViewName("mainView/profile/manageMyProfileCenter.jsp");
+		
+		return mv;
+
+	}//updateUserNickname
 
 }// class

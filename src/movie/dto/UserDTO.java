@@ -52,6 +52,11 @@ public class UserDTO {
 		this.session = session;
 	}
 
+	public UserDTO(int uid, String name) {
+		this.uid = uid;
+		this.name = name;
+	}
+	
 	// set&get
 	public int getUid() {
 		return uid;
