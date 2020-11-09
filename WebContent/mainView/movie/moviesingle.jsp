@@ -39,6 +39,8 @@
 
 </head>
 <body>
+<h1>${requestScope.title } 's detail</h1>
+
 	<!--login form popup-->
 <!-- <div class="login-wrapper"  id="signup-content">
     <div class="login-content">

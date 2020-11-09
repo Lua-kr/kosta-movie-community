@@ -23,7 +23,7 @@ public class MovieDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("detail doget");
+		//System.out.println("detail doget");
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String code = request.getParameter("code");
@@ -47,7 +47,7 @@ public class MovieDetail extends HttpServlet {
 					result += line;
 				}
 				response.getWriter().append(result + "<hr>");
-				System.out.println("result : "+result);
+				//System.out.println("result : "+result);
 
 				// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 				JsonElement element = new JsonParser().parse(result);
@@ -66,84 +66,83 @@ public class MovieDetail extends HttpServlet {
 				String vote_count =element.getAsJsonObject().get("vote_count").getAsString();
 				String title =element.getAsJsonObject().get("title").getAsString();
 				
-				 if (!title.equals("")) {
+				 if (!title.equals("") || !title.isEmpty()) {
 		            	request.setAttribute("title", title);
 				 }else {
 		            	request.setAttribute("title", "title 존재하지 않습니다");
 				 }
-				 if (!original_title.equals("")) {
+				 if (!original_title.equals("") || !original_title.isEmpty()) {
 		            	request.setAttribute("original_title", original_title);
 				 }else {
 		            	request.setAttribute("original_title", "original_title 존재하지 않습니다");
 				 }
-				 if (!budget.equals("")) {
+				 if (!budget.equals("") || !budget.isEmpty()) {
 		            	request.setAttribute("budget", budget);
 				 }else {
 		            	request.setAttribute("budget", "budget 존재하지 않습니다");
 				 }
-				 if (!overview.equals("")) {
+				 if (!overview.equals("")|| !overview.isEmpty()) {
 		            	request.setAttribute("overview", overview);
 				 }else {
 		            	request.setAttribute("overview", "overview 존재하지 않습니다");
 				 }
-				 if (!popularity.equals("")) {
+				 if (!popularity.equals("")|| !popularity.isEmpty()) {
 		            	request.setAttribute("popularity", popularity);
 				 }else {
 		            	request.setAttribute("popularity", "popularity 존재하지 않습니다");
 				 }
-				 if (!poster_path.equals("")) {
+				 if (!poster_path.equals("")|| !poster_path.isEmpty()) {
 		            	request.setAttribute("poster_path", poster_path);
 				 }else {
 		            	request.setAttribute("poster_path", "poster_path 존재하지 않습니다");
 				 }
-				 if (!release_date.equals("")) {
+				 if (!release_date.equals("")|| !release_date.isEmpty()) {
 		            	request.setAttribute("release_date", release_date);
 				 }else {
 		            	request.setAttribute("release_date", "release_date 존재하지 않습니다");
 				 }
-				 if (!revenue.equals("")) {
+				 if (!revenue.equals("")|| !revenue.isEmpty()) {
 		            	request.setAttribute("revenue", revenue);
 				 }else {
 		            	request.setAttribute("revenue", "revenue 존재하지 않습니다");
 				 }
-				 if (!runtimes.equals("")) {
+				 if (!runtimes.equals("")|| !runtimes.isEmpty()) {
 		            	request.setAttribute("runtimes", runtimes);
 				 }else {
 		            	request.setAttribute("runtimes", "runtimes 존재하지 않습니다");
 				 }
-				 if (!tagline.equals("")) {
+				 if (!tagline.equals("")|| !tagline.isEmpty()) {
 		            	request.setAttribute("tagline", tagline);
 				 }else {
 		            	request.setAttribute("tagline", "tagline 존재하지 않습니다");
 				 }
-				 if (!vote_average.equals("")) {
+				 if (!vote_average.equals("")|| !vote_average.isEmpty()) {
 		            	request.setAttribute("vote_average", vote_average);
 				 }else {
 		            	request.setAttribute("vote_average", "vote_average 존재하지 않습니다");
 				 }
-				 if (!vote_count.equals("")) {
+				 if (!vote_count.equals("")|| !vote_count.isEmpty()) {
 		            	request.setAttribute("vote_count", vote_count);
 				 }else {
 		            	request.setAttribute("vote_count", "vote_count 존재하지 않습니다");
 				 }
 				 
 				
-				System.out.println("title = "+title);
-				System.out.println("budget = "+budget);
-				System.out.println("overview = "+overview);
-				System.out.println("popularity = "+popularity);
-				System.out.println("poster_path = "+poster_path);
-				System.out.println("release_date = "+release_date);
-				System.out.println("revenue = "+revenue);
-				System.out.println("runtimes = "+runtimes);
-				System.out.println("tagline = "+tagline);
-				System.out.println("vote_average = "+vote_average);
-				System.out.println("vote_count = "+vote_count);
+//				System.out.println("title = "+title);
+//				System.out.println("budget = "+budget);
+//				System.out.println("overview = "+overview);
+//				System.out.println("popularity = "+popularity);
+//				System.out.println("poster_path = "+poster_path);
+//				System.out.println("release_date = "+release_date);
+//				System.out.println("revenue = "+revenue);
+//				System.out.println("runtimes = "+runtimes);
+//				System.out.println("tagline = "+tagline);
+//				System.out.println("vote_average = "+vote_average);
+//				System.out.println("vote_count = "+vote_count);
 				
 				
 				br.close();
-				
-				request.getRequestDispatcher("detailSuccess.jsp").forward(request, response);
+				request.getRequestDispatcher("mainView/movie/movieDetail.jsp").forward(request, response);
 
 			} // if
 		} catch (IOException e) {

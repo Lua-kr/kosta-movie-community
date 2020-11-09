@@ -128,7 +128,6 @@
 
 											// 결과 코드가 200이라면 성공
 											int responseCode = urlconnection.getResponseCode();
-											//System.out.println("search responseCode : " + responseCode);
 
 											if (responseCode == 200) {
 												br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
@@ -137,8 +136,6 @@
 												while ((line = br.readLine()) != null) {
 											result += line;
 												}
-												//response.getWriter().append(result + "<hr>");
-												System.out.println("result : " + result);
 
 												// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 												JsonElement element = new JsonParser().parse(result);
@@ -146,7 +143,6 @@
 												JsonObject obj;
 												Map<String, JsonObject> map = new HashMap<String, JsonObject>();
 												for (int i = 0; i < results.size(); i++) {
-											//System.out.println("index " + i + " =  " + results.get(i) + "\n");
 											obj = (JsonObject) results.get(i);
 											map.put(Integer.toString(i), obj);
 												}
@@ -179,7 +175,7 @@
 														alt="포스터" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i
+													<a href="../detail?code=<%= jobj.get("id").getAsString() %>"> 상세정보<i
 														class="ion-android-arrow-dropright"></i>
 													</a>
 												</div>
@@ -217,7 +213,6 @@
 
 											// 결과 코드가 200이라면 성공
 											int responseCode = urlconnection.getResponseCode();
-											//System.out.println("search responseCode : " + responseCode);
 
 											if (responseCode == 200) {
 												br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
@@ -226,8 +221,6 @@
 												while ((line = br.readLine()) != null) {
 											result += line;
 												}
-												//response.getWriter().append(result + "<hr>");
-												System.out.println("result : " + result);
 
 												// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 												JsonElement element = new JsonParser().parse(result);
@@ -235,7 +228,6 @@
 												JsonObject obj;
 												Map<String, JsonObject> map = new HashMap<String, JsonObject>();
 												for (int i = 0; i < results.size(); i++) {
-											//System.out.println("index " + i + " =  " + results.get(i) + "\n");
 											obj = (JsonObject) results.get(i);
 											map.put(Integer.toString(i), obj);
 												}
@@ -268,7 +260,7 @@
 														alt="포스터" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i
+													<a href="../detail?code=<%= jobj.get("id").getAsString() %>"> 상세정보<i
 														class="ion-android-arrow-dropright"></i>
 													</a>
 												</div>
@@ -306,7 +298,6 @@
 
 											// 결과 코드가 200이라면 성공
 											int responseCode = urlconnection.getResponseCode();
-											//System.out.println("search responseCode : " + responseCode);
 
 											if (responseCode == 200) {
 												br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
@@ -315,8 +306,6 @@
 												while ((line = br.readLine()) != null) {
 											result += line;
 												}
-												//response.getWriter().append(result + "<hr>");
-												System.out.println("result : " + result);
 
 												// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 												JsonElement element = new JsonParser().parse(result);
@@ -324,7 +313,6 @@
 												JsonObject obj;
 												Map<String, JsonObject> map = new HashMap<String, JsonObject>();
 												for (int i = 0; i < results.size(); i++) {
-											//System.out.println("index " + i + " =  " + results.get(i) + "\n");
 											obj = (JsonObject) results.get(i);
 											map.put(Integer.toString(i), obj);
 												}
@@ -357,7 +345,7 @@
 														alt="포스터" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i
+													<a href="../detail?code=<%= jobj.get("id").getAsString() %>"> 상세정보 <i
 														class="ion-android-arrow-dropright"></i>
 													</a>
 												</div>
