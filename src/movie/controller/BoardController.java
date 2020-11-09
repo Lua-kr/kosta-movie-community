@@ -85,13 +85,13 @@ public class BoardController implements Controller {
 	/**Á¶È¸*/
 	public ModelAndView selectReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<ForumThread> list = new ArrayList<ForumThread>();
-		//int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
+		System.out.println("board");
 		int categoryNo =0;
-		service.selectReview(categoryNo);
+		list = service.selectReview(categoryNo);
 		request.setAttribute("list", list);
 		System.out.println(list);
 		      
-		ModelAndView mv = new ModelAndView("reviewBoardCenter.jsp", false);
+		ModelAndView mv = new ModelAndView("mainView/community/reviewBoardCenter.jsp", false);
 		      
 		return mv;
 	}

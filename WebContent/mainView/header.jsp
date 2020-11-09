@@ -49,7 +49,7 @@
 							</a>
 							<ul class="dropdown-menu level1">
 								<li><a href="${pageContext.request.contextPath}/mainView/community/freeBoard.jsp">자유게시판</a></li>
-								<li><a href="${pageContext.request.contextPath}/mainView/community/reviewBoard.jsp">리뷰게시판</a></li>
+								<li><a href="${pageContext.request.contextPath}/app?k=board&v=selectReview">리뷰게시판</a></li>
 								<li><a href="${pageContext.request.contextPath}/mainView/community/favoriteList.jsp">즐겨찾기</a></li>
 								<li class="it-last"><a href="${pageContext.request.contextPath}/mainView/community/userRate.jsp">나의 평점</a></li>
 								

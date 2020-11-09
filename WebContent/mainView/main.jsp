@@ -381,7 +381,7 @@
 					<div class="tabs">
 						<ul class="tab-links-2">
 							<li><a href="#tab21">#자유 게시판</a></li>
-							<li class="active"><a href="#tab22"> #리뷰 게시판 </a></li>
+							<li class="active"><!-- <a href="#tab22" > --><a href="app?k=board&v=selectReview" >#리뷰 게시판 </a></li>
 						</ul>
 						<div class="tab-content">
 							<div id="tab21" class="tab">

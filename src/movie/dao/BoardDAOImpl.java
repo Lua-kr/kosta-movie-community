@@ -108,11 +108,11 @@ public class BoardDAOImpl implements BoardDAO {
 	 */
 	@Override
 	public List<ForumThread> selectReview(int categoryNo) throws SQLException {
-		Connection con = DbUtil.getConnection();
+		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<ForumThread> list = new ArrayList<ForumThread>();
-		String sql = "select t.* , r.movie_id,r.RATE from forum_thread t ,FORUM_REVIEW where t.u_id =r.THREAD_ID and t.FORUM_CATEGORY_ID=?";
+		String sql = "select t.* , r.movie_id,r.RATE from forum_thread t ,FORUM_REVIEW r where t.u_id =r.THREAD_ID and t.FORUM_CATEGORY_ID=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
