@@ -29,10 +29,10 @@
 <meta name="format-detection" content="telephone-no">
 
 <!-- CSS files -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/plugins.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugin1.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugin2.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugin3.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
 
 <script type="text/javascript"
@@ -84,13 +84,17 @@
 		                        <div class="user-img">
 		                        	<c:choose>
 		                        		<c:when test="${uid == null}">
-		                        			<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/user-img.png"
-		                             		 alt=""><br></a> <a href="#" class="redbtn">사진 변경</a><br>
+		                        			<img src="https://picsum.photos/150" alt=""><br>
 		                        		</c:when>
 		                        		<c:otherwise>
-		                        			<a href="#"><img src="${profile_img}"
-		                             		 alt=""><br></a> <a href="#" class="redbtn">사진 변경</a><br>
-		                        			
+		                        			<c:choose>
+			                        			<c:when test="${profile_img ne null}">
+			                        				<img src="${profile_img}" height=150 width=150 alt="Kakao Profile Image"><br>
+		                        				</c:when>
+		                        				<c:otherwise>
+			                        				<img src="https://www.gravatar.com/avatar/${uid}?d=identicon&s=150" alt="Gravatar Profile Image"><br>
+		                        				</c:otherwise>
+	                        				</c:choose>
 		                        		</c:otherwise>
 		                        	</c:choose>
 		                           
@@ -123,7 +127,7 @@
 								<!-- your content here -->
 								<iframe
 									src="${pageContext.request.contextPath}/mainView/profile/manageMyProfileCenter.jsp"
-									name="center" width="1300px" height="900px" frameborder="0"></iframe>
+									name="center" width="800px" height="900px" frameborder="0"></iframe>
 							</div>
 						</div>
 					</div>
