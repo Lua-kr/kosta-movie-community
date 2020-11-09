@@ -1,10 +1,14 @@
 package movie.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import movie.dto.ForumPost;
+import movie.dto.ForumReview;
 import movie.dto.ForumThread;
 import movie.service.BoardService;
 import movie.service.ForumPostService;
@@ -78,6 +82,18 @@ public class BoardController implements Controller {
 		return mv;
 	}		
 	
+	/**Á¶È¸*/
+	public ModelAndView selectReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<ForumThread> list = new ArrayList<ForumThread>();
+		//int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
+		int categoryNo =0;
+		service.selectReview(categoryNo);
+		request.setAttribute("list", list);
+		      
+		ModelAndView mv = new ModelAndView("reviewBoardcenter.jsp", false);
+		      
+		return mv;
+	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	

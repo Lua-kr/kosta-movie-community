@@ -1,7 +1,9 @@
 package movie.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import movie.dto.ForumReview;
 import movie.dto.ForumThread;
 
 public interface BoardDAO {
@@ -26,6 +28,11 @@ public interface BoardDAO {
 	 * ∏Æ∫‰(ªË¡¶)
 	 */
 	int deleteReview(int uid, int authorid) throws SQLException;
+	
+	/**
+	 * ∏Æ∫‰(¡∂»∏)
+	 */
+	List<ForumThread> selectReview(int categoryNo) throws SQLException;
 	
 	
 	

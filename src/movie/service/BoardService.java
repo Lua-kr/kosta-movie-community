@@ -1,35 +1,11 @@
 package movie.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import movie.dao.BoardDAO;
 import movie.dao.BoardDAOImpl;
-<<<<<<< HEAD
-
-public class BoardService {
-	private static BoardDAO dao = new BoardDAOImpl();
-
-	/**
-	 * 	 리뷰 (수정)
-	 * */
-	public static int updateReview(int uid, int authorid, String text, String title) throws SQLException{
-		int result = dao.updateReview(uid, authorid, text, title);
-		if(result == 0) { throw new SQLException("수정을 실패했습니다.");
-		}
-		return result;
-	}
-	
-	/**
-	 * 	 리뷰 (삭제)
-	 * */
-	public static int deleteReview(int uid, int authorid) throws SQLException{
-		int result = dao.deleteReview(uid, authorid);
-		if(result == 0) { throw new SQLException("삭제를 실패했습니다.");
-		}
-		return result;
-	}
-}
-=======
+import movie.dto.ForumReview;
 import movie.dto.ForumThread;
 
 public class BoardService {
@@ -72,9 +48,19 @@ public class BoardService {
 	      }
 	      return result;
 	   }//deleteReview
-
 	   
 	   /**
+	    *     리뷰 (조회)
+	    * */
+	   public List<ForumThread> selectReview(int categoryNo) throws SQLException{
+	      List<ForumThread> list = dao.selectReview(categoryNo);
+	      if(list == null) throw new SQLException("검색 실패");
+	      return list;
+	  
+	   }//selectReview
+
+	   
+	   /**s
 	    * 	카테고리
 	    * */
 	   public int selectcategory() throws SQLException{
@@ -89,4 +75,3 @@ public class BoardService {
 	
 
 }//class
->>>>>>> branch 'master' of https://github.com/Lua-kr/kosta-movie-community.git

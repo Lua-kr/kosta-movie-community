@@ -5,7 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import movie.dto.ForumReview;
 import movie.dto.ForumThread;
 import movie.util.DbUtil;
 
@@ -100,6 +103,34 @@ public class BoardDAOImpl implements BoardDAO {
 		return result;
 	}//deleteReview
 
+	/**
+	 * ¸®ºä(Á¶È¸)
+	 */
+	@Override
+	public List<ForumThread> selectReview(int categoryNo) throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<ForumThread> list = new ArrayList<ForumThread>();
+		String sql = "select * from forum_thread where forum_category_id=?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,categoryNo);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ForumThread forumthread= new ForumThread(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10));
+				list.add(forumthread);
+			}
+			
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return list;
+	}//deleteReview
+	
 	@Override
 	public int selectcategory() throws SQLException {
 		Connection con = DbUtil.getConnection();
