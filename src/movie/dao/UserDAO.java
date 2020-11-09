@@ -40,7 +40,7 @@ public interface UserDAO {
 	 * @param	int [userlist 테이블] u_id
 	 * @return	boolean [user 테이블] account_locked 값 (0/1 = false/true)
 	 */
-	boolean getUserLocked(int uid) throws SQLException;
+	boolean isUserLocked(int uid) throws SQLException;
 	
 	
 	/**
@@ -189,15 +189,6 @@ public interface UserDAO {
 	
 	
 	/**
-	 * 	유저 마지막 로그인 날짜 갱신
-	 * 
-	 * @param	int [userlist 테이블] u_id
-	 * @return	String date
-	 */
-	boolean updateUserLastDate(int uid) throws SQLException;
-	
-	
-	/**
 	 *	계정 잠금
 	 *
 	 * @param1	int [userlist 테이블] u_id
@@ -205,6 +196,16 @@ public interface UserDAO {
 	 * @return	성공 여부 (false/true)
 	 */
 	boolean setUserLock(int uid, boolean lock) throws SQLException;
+
+
+	/**
+	 *	유저 성인 나이 여부 설정
+	 * @param uid
+	 * @param isAdult
+	 * @return
+	 * @throws SQLException
+	 */
+	boolean setUserAgeAdult(int uid, boolean isAdult) throws SQLException;
 	
 	
 }//UserDAO

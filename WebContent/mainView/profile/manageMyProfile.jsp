@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7 no-js" lang="en-US">
@@ -81,8 +82,18 @@
 		                  <div class="col-md-3 col-sm-12 col-xs-12">
 		                     <div class="user-information">
 		                        <div class="user-img">
-		                           <a href="#"><img src="${pageContext.request.contextPath}/images/uploads/user-img.png"
-		                              alt=""><br></a> <a href="#" class="redbtn">사진 변경</a><br>
+		                        	<c:choose>
+		                        		<c:when test="${uid == null}">
+		                        			<a href="#"><img src="${pageContext.request.contextPath}/images/uploads/user-img.png"
+		                             		 alt=""><br></a> <a href="#" class="redbtn">사진 변경</a><br>
+		                        		</c:when>
+		                        		<c:otherwise>
+		                        			<a href="#"><img src="${profile_img}"
+		                             		 alt=""><br></a> <a href="#" class="redbtn">사진 변경</a><br>
+		                        			
+		                        		</c:otherwise>
+		                        	</c:choose>
+		                           
 		                        </div>
 		                     </div>
 		                  </div>

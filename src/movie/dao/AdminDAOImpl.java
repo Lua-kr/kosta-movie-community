@@ -15,30 +15,23 @@ import movie.util.DbUtil;
 public class AdminDAOImpl implements AdminDAO {
 
 	@Override
-	public boolean checkAdmin(int uid) throws SQLException {
+	public boolean checkAdmin(int uid) {
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 		boolean result = false;
 		Admin dto = new Admin();
-		String sql = "SELECT * FROM USER_ADMIN WHERE U_ID = ?";
+		String sql = "SELECT * FROM USER_ADMIN WHERE USER_UID = ?";
 
 		try {
-			System.out.println("AdminDAOImpl checkAdmin");
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, uid);
 
-			rs = ps.executeQuery();
-			if (rs.next()) {
-				dto = new Admin(rs.getInt(1), rs.getInt(2));
-			} // if
-
-			result = true;
+			result = (ps.executeUpdate() != 0);
 		} catch (Exception e) {
-			result = false;
-		} finally {
-			DbUtil.dbClose(con, ps, rs);
+			e.printStackTrace();
+		}finally {
+			DbUtil.dbClose(con, ps);
 		} // finally
 
 		return result;

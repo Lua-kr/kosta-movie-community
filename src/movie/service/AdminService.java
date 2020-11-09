@@ -16,13 +16,10 @@ public class AdminService {
 	 *
 	 * @param	int [userlist 테이블] u_id
 	 * @return	관리자 여부 (0/1 = false/true)
+	 * @throws SQLException 
 	 */
 	public static boolean checkAdmin(int uid) throws SQLException {
-		System.out.println("AdminService checkAdmin");
 		boolean result = dao.checkAdmin(uid);
-		if(!result) {
-			throw new SQLException("관리자가 아닙니다.");
-		}//if
 		return result;
 	}//checkAdmin
 	
