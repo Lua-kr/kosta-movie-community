@@ -24,7 +24,7 @@ import com.google.gson.JsonParser;
 /**
  * Servlet implementation class SearchMovie
  */
-@WebServlet("/searchMovie")
+@WebServlet("/search")
 public class SearchMovie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -71,7 +71,7 @@ public class SearchMovie extends HttpServlet {
 					
 				br.close();
 				
-				request.getRequestDispatcher("searchMovie.jsp").forward(request, response);
+				request.getRequestDispatcher("mainView/movie/searchMovie.jsp").forward(request, response);
 
 			} // if
 		} catch (IOException e) {

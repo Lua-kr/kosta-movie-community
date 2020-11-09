@@ -73,7 +73,7 @@
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 					<c:choose>
 					    <c:when test="${uid eq null}">
-						<li class="btn"><img src="${pageContext.request.contextPath}/images/kakao_login.png" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=f7eccd34f9b5aa5b18e0a8d1257e4cce&redirect_uri=http://localhost:8000/MovieWorld/login&response_type=code'; return false;"></li>
+						<li	="${pageContext.request.contextPath}/images/kakao_login.png" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=f7eccd34f9b5aa5b18e0a8d1257e4cce&redirect_uri=http://localhost:8000/MovieWorld/login&response_type=code'; return false;"></li>
 						</c:when>
 						<c:otherwise>
 							<li class="btn"><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
@@ -85,8 +85,16 @@
 	    </nav>
 	    
 	    <!-- top search form -->
-	    <div class="top-search">
+	    <form class="top-search" action="../search" method="get">
+	    	<input type="text" placeholder="영화 검색" name="name">
+	    	<button type="submit"><i class="fa fa-search"></i></button> 
+	    </form>
+	    
+	  <!--   <div class="top-search" action="" >
 			<input type="text" placeholder="영화 검색">
+			 -->
+			
+			
 	    </div>
 	</div>
 </header>
